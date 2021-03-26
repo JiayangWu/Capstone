@@ -9,4 +9,20 @@
     text-align: center;
 }
 
+select {
+    color: #555;
+    font-size: inherit;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select1 {
+    position: relative;
+    left:500px;
+}
+
 /* Include any custom CSS styling here! */
