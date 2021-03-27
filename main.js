@@ -42,7 +42,35 @@ d3.select("#selectButton2")
     .text(function (d) { return d; }) // text showed in the menu
     .attr("value", function (d) { return parseInt(d); }) // corresponding value returned by the button
 
-// var data = d3.csv("./data/video_games.csv");
+let x = d3.scaleLinear()
+    .range([0, width - `${margin.left}` - `${margin.right}`]);
+
+let y = d3.scaleBand()
+    .range([0, height - `${margin.top}` - `${margin.bottom}`])
+    .padding(0.1);  // Improves readability
+
+let y_axis_label = svg1.append("g").attr("id", "y1_label");
+let color = d3.scaleOrdinal()
+    .range(d3.quantize(d3.interpolateHcl("#66a0e2", "#81c2c3"), 10));
+
+svg1.append("text")
+    .attr("transform", `translate(${(width - margin.left - margin.right) / 2},
+${(height - margin.top - margin.bottom) + 15})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
+    .style("text-anchor", "middle")
+    .text("Global Sells Count");
+
+// TODO: Add y-axis label
+svg1.append("text")
+    .attr("transform", `translate(-150, ${(height - margin.top - margin.bottom) / 2})`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
+    .style("text-anchor", "middle")
+    .text("Game");
+
+// TODO: Add chart title
+svg1.append("text")
+    .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
+    .style("text-anchor", "middle")
+    .style("font-size", 15)
+    .text("Top 10 Best Game Seller Chart");
 function update(year1, year2) {
 
     function checkYear(year) {
@@ -54,41 +82,33 @@ function update(year1, year2) {
         var dataFilter = data.filter(function (d) {
             return checkYear(parseFloat(d.Year));
         })
-        var topKdata = dataFilter.slice(0, 10);
-        data = topKdata;
+        data = dataFilter.slice(0, 10);
+
         console.log(year1, year2);
-        console.log(topKdata);
-        console.log(data[0].Global_Sales);
+        console.log(data);
         let counts = countRef.selectAll("text").data(data);
 
-        let x = d3.scaleLinear()
-            .domain([0, data[0].Global_Sales])
-            .range([0, width - `${margin.left}` - `${margin.right}`]);
+        x.domain([0, data[0].Global_Sales])
 
+        y.domain(data.map(function (d) { return d.Name }))
 
-        let y = d3.scaleBand()
-            .domain(data.map(function (d) { return d.Name }))
-            .range([0, height - `${margin.top}` - `${margin.bottom}`])
-            .padding(0.1);  // Improves readability
-
-
-        svg1.append("g")
-            .call(d3.axisLeft(y).tickSize(0).tickPadding(10));
+        y_axis_label.call(d3.axisLeft(y).tickSize(0).tickPadding(10));
 
         let bars = svg1.selectAll("rect").data(data);
 
-        let color = d3.scaleOrdinal()
-            .domain(data.map(function (d) { return d.Name }))
-            .range(d3.quantize(d3.interpolateHcl("#66a0e2", "#81c2c3"), 10));
+        color.domain(data.map(function (d) { return d.Name }))
 
         bars.enter()
             .append("rect")
+            .on("mouseover", mouseover_barplot)
+            .on("mouseout", mouseout_barplot)
             .merge(bars)
             .attr("fill", function (d) { return color(d.Name) }) // Here, we are using functin(d) { ... } to return fill colors based on the data point d
             .attr("x", x(0))
             .attr("y", function (d) { return y(d.Name) })               // HINT: Use function(d) { return ...; } to apply styles based on the data point (d)
             .attr("width", function (d) { return x(d.Global_Sales) })
-            .attr("height", y.bandwidth());
+            .attr("height", y.bandwidth())
+            .attr("id", function (d) { return `rect-${d.Rank}` });
 
         counts.enter()
             .append("text")
@@ -99,38 +119,23 @@ function update(year1, year2) {
             .text(function (d) { return d.Global_Sales });           // HINT: Get the count of the artist
 
 
-        svg1.append("text")
-            .attr("transform", `translate(${(width - margin.left - margin.right) / 2},
-        ${(height - margin.top - margin.bottom) + 15})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
-            .style("text-anchor", "middle")
-            .text("Global Sells Count");
-
-        // TODO: Add y-axis label
-        svg1.append("text")
-            .attr("transform", `translate(-120, ${(height - margin.top - margin.bottom) / 2})`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
-            .style("text-anchor", "middle")
-            .text("Game");
-
-        // TODO: Add chart title
-        svg1.append("text")
-            .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
-            .style("text-anchor", "middle")
-            .style("font-size", 15)
-            .text("Top 10 Best Game Seller Chart");
     });
 
 
 }
 
 var g1_s1_year_value = 1980;
-var g1_s2_year_value = 1980;
+var g1_s2_year_value = 1981;
 
-update(1980, 1980);
+update(1980, 1981);
 
 d3.select("#selectButton1").on("change", function (d) {
     // get new value from the select button
     g1_s1_year_value = d3.select(this).property("value");
     // run the updateChart function with this selected option
+    if (g1_s1_year_value > g1_s2_year_value) {
+        window.alert("Please select valid time range!");
+    }
     update(g1_s1_year_value, g1_s2_year_value);
 })
 
@@ -138,9 +143,32 @@ d3.select("#selectButton2").on("change", function (d) {
     // get new value from the select button
     g1_s2_year_value = d3.select(this).property("value");
     // run the updateChart function with this selected option
+    if (g1_s1_year_value > g1_s2_year_value) {
+        window.alert("Please select valid time range!");
+    }
     update(g1_s1_year_value, g1_s2_year_value);
 })
+/**
+ * Returns a darker shade of a given color
+ */
+function darkenColor(color, percentage) {
+    return d3.hsl(color).darker(percentage);
+}
 
+console.log(color);
+let mouseover_barplot = function (d) {
+    // console.log("mouseover!");
+    console.log(d);
+    console.log(color(d.Global_Sales));
+    svg1.select(`#rect-${d.Rank}`).attr("fill", function (d) {
+        return darkenColor(color(d.Global_Sales), 0.5);
+    });
+};
 
-// read data from .csv file
+// Restore bar fill to original color on mouseout
+let mouseout_barplot = function (d) {
+    svg1.select(`#rect-${d.Rank}`).attr("fill", function (d) {
+        return color(d.Global_Sales)
+    });
+};
 
