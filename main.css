@@ -31,4 +31,12 @@ select {
 .graph3 {
     height:1720 px;
 }
+
+#pie_title {
+    font-size:15px;
+/*     font-weight:bold; */
+    padding-left:150px;
+    align:center;
+    
+}
 /* Include any custom CSS styling here! */
