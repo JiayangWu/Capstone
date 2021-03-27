@@ -120,8 +120,6 @@ function update(year1, year2) {
 
 
     });
-
-
 }
 
 var g1_s1_year_value = 1980;
@@ -155,11 +153,10 @@ function darkenColor(color, percentage) {
     return d3.hsl(color).darker(percentage);
 }
 
-console.log(color);
 let mouseover_barplot = function (d) {
     // console.log("mouseover!");
-    console.log(d);
-    console.log(color(d.Global_Sales));
+    // console.log(d);
+    // console.log(color(d.Global_Sales));
     svg1.select(`#rect-${d.Rank}`).attr("fill", function (d) {
         return darkenColor(color(d.Global_Sales), 0.5);
     });
@@ -171,4 +168,6 @@ let mouseout_barplot = function (d) {
         return color(d.Global_Sales)
     });
 };
+
+
 
