@@ -12,8 +12,7 @@ const color2 = d3.scaleOrdinal()
     .range(d3.schemeSet2);
 
 const pie = d3.pie()
-    .value(d => d.count)
-    .sort(null);
+    .value(function (d) { return d.count; })
 
 const arc = d3.arc()
     .innerRadius(0)
@@ -48,14 +47,12 @@ d3.json("data.json", type).then(data => {
 
     function update(val = this.value) {
         // Join new data
-        console.log(val);
+        // console.log(val);
+
+        var region_data = pie(data[val]);
+
         const path = svg2.selectAll("path.slice")
-            .data(pie(data[val]));
-
-        // var pie = d3.pie()
-        //     .value(function (d) { return d.value; })
-        // var data_ready = pie(d3.entries(data))
-
+            .data(region_data);
         // Update existing arcs
         path.transition().duration(200).attrTween("d", arcTween);
 
@@ -68,22 +65,18 @@ d3.json("data.json", type).then(data => {
             .style("opacity", 0.85)
             .each(function (d) { this._current = d; });
 
-        // const text = svg2.selectAll("text")
-        //     .data(data[val])
-        //     .enter()
-        //     .append('text')
-        //     .text(function (d) { console.log(d.genre); return d.genre })
-        //     .attr("font-size", 30);
-
-        svg2
+        function GetMidAngle(d) {
+            return d.startAngle + (d.endAngle - d.startAngle) / 2;
+        }
+        var text = svg2
             .selectAll('mySlices')
-            .data(data[val])
+            .data(region_data)
             .enter()
             .append('text')
-            .text(function (d) { return "grp " + d.genre })
+            .text(function (d) { console.log(d); return d.data.genre })
             .attr("transform", function (d) { return "translate(" + arcGenerator.centroid(d) + ")"; })
             .style("text-anchor", "middle")
-            .style("font-size", 5)
+            .style("font-size", 15);
 
     }
 
