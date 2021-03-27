@@ -3,7 +3,7 @@ const radius = Math.min(width, height) / 2;
 const svg2 = d3.select("#graph2")
     .append("svg")
     .attr("width", width)
-    .attr("height", 540)
+    .attr("height", 400)
     .append("g")
     .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
@@ -31,6 +31,12 @@ const labelArc2 = d3.arc()
     .innerRadius(radius * 0.96)
     .outerRadius(radius * 0.96)
 
+
+
+function midAngle(d) {
+    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+}
+
 function type(d) {
     d.NA = Number(d.NA);
     d.EU = Number(d.EU);
@@ -39,28 +45,27 @@ function type(d) {
     return d;
 }
 
-// function arcTween(a) {
-//     const i = d3.interpolate(this._current, a);
-//     this._current = i(1);
-//     return (t) => arc(i(t));
-// }
 
+function resetChart() {
+    console.log(svg2);
+
+}
 
 d3.json("data.json", type).then(data => {
     console.log(data);
-    d3.selectAll("input")
-        .on("change", update);
-
     function update(val = this.value) {
+        // console.log(val, "dsadass");
+        svg2.selectAll("text").remove();
+        svg2.selectAll("path").remove();
+        svg2.selectAll("polyline").remove();
 
         var region_data = pie(data[val]);
-        const path = svg2.selectAll("path.slice")
-            .data(region_data);
-        // Update existing arcs
-        // path.transition().duration(200).attrTween("d", arcTween);
+        console.log(region_data);
 
-        // Enter new arcs
-        path.enter().append("path")
+        const paths = svg2.selectAll("path")
+            .data(region_data);
+
+        paths.enter().append("path")
             .attr("fill", (d, i) => color2(i))
             .attr("d", arc)
             .attr("stroke", "white")
@@ -68,26 +73,20 @@ d3.json("data.json", type).then(data => {
             .style("opacity", 0.85)
             .each(function (d) { this._current = d; });
 
-        function midAngle(d) {
-            return d.startAngle + (d.endAngle - d.startAngle) / 2;
-        }
-
-        var text = svg2
-            .selectAll('mySlices')
+        var texts = svg2
+            .selectAll('text')
             .data(region_data)
             .enter()
             .append('text')
-            .text(function (d) { console.log(d); return d.data.genre });
-
-        text
+            .text(function (d) { console.log(d); return d.data.genre })
             .style("text-anchor", "middle")
             .style("font-size", 12);
 
-        text.attr('transform', function (d) {
+        texts.attr('transform', function (d) {
             var pos = outerArc.centroid(d);
-            console.log(d, pos);
+            // console.log(d, pos);
             var mid_angle = midAngle(d);
-            if (d.endAngle >= 6.0) {
+            if (d.endAngle >= 5.8) {
                 pos[1] += 13;
             }
             if (d.index == 11) {
@@ -97,23 +96,22 @@ d3.json("data.json", type).then(data => {
             return 'translate(' + pos + ')';
         });
 
-        text.exit()
-            .remove();
 
-        svg2
-            .selectAll('allPolylines')
+
+        var poly_lines = svg2
+            .selectAll('polyline')
             .data(region_data)
             .enter()
             .append('polyline')
             .attr("stroke", "black")
             .style("fill", "none")
-            .attr("stroke-width", 0.8)
+            .attr("stroke-width", 0.9)
             .attr("opacity", 0.85)
             .attr('points', function (d) {
                 var posA = labelArc1.centroid(d) // line insertion in the slice
                 var posB = labelArc2.centroid(d)
                 var posC = labelArc2.centroid(d); // Label position = almost the same as posB
-                if (d.endAngle >= 6.0) {
+                if (d.endAngle >= 5.8) {
                     posC[1] += 13;
                     posB[1] += 13;
                 }
@@ -125,7 +123,15 @@ d3.json("data.json", type).then(data => {
                 posC[0] = radius * 1.0 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
                 return [posA, posB, posC]
             })
-    }
 
+        texts.exit()
+            .remove();
+        paths.exit().remove();
+        poly_lines.exit().remove();
+    }
     update("NA");
+    // d3.select("#regionButton").on("change", update)
+    d3.selectAll("input")
+        .on("change", update);
+
 });
