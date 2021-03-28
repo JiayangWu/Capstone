@@ -15,16 +15,45 @@ year = df.Year
 # '''['1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
 # '''
 from collections import defaultdict
-Other_Genre2Total = defaultdict(int)
-for index, row in df.iterrows():
-    # print(row)
-    Other_Genre2Total[row['Genre']] += row['Other_Sales']
+def countSalesPerRegion():
+    Other_Genre2Total = defaultdict(int)
+    for index, row in df.iterrows():
+        # print(row)
+        Other_Genre2Total[row['Genre']] += row['Other_Sales']
 
-res = []
-for genre, count in Other_Genre2Total.items():
-    res.append({"Genre": genre, "count":str(count)})
+    res = []
+    for genre, count in Other_Genre2Total.items():
+        res.append({"Genre": genre, "count":str(count)})
 
-print({"Other":res})
+    print({"Other":res})
+
+def countSalesPerGenre():
+    genres = ['Sports', 'Misc', 'Racing', 'Strategy', 'Platform', 'Action', 'Shooter', 'Role-Playing', 'Puzzle', 'Adventure', 'Simulation', 'Fighting']
+    for genre in genres:
+        publisher2sales = defaultdict(int)
+        for index, row in df.iterrows():
+            genre1, publisher, sales = row['Genre'], row['Publisher'], row['Global_Sales']
+            if genre1 == genre:
+                publisher2sales[publisher] += sales
+        res = []
+        for publisher, sales in publisher2sales.items():
+            res.append((publisher, sales))
+
+        res.sort(key = lambda x:-x[1])
+
+        dic = []
+        for publisher, sales in res[:5]:
+            dic.append({"publisher":publisher, "sales":sales})
+
+        r = {}
+        r[genre] = dic
+        print(r)
+
+countSalesPerGenre()
+
+
+
+
 # defaultdict(<class 'int'>, {'Sports': 683.3499999999967, 'Platform': 447.0499999999991, 'Racing': 359.41999999999774, 'Role-Playing': 327.279999999999, 'Puzzle': 123.78000000000009, 'Misc': 410.23999999999904, 'Shooter': 582.599999999995, 'Simulation': 183.31000000000068, 'Action': 877.8299999999916, 'Fighting': 223.59000000000017, 'Adventure': 105.79999999999998, 'Strategy': 68.70000000000019})
 
 # print(NA_Genre2Total)

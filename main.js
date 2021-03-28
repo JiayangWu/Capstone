@@ -50,6 +50,7 @@ let y = d3.scaleBand()
     .padding(0.1);  // Improves readability
 
 let y_axis_label = svg1.append("g").attr("id", "y1_label");
+
 let color = d3.scaleOrdinal()
     .range(d3.quantize(d3.interpolateHcl("#66a0e2", "#81c2c3"), 10));
 

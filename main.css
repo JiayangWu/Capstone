@@ -27,7 +27,11 @@ select {
     left:200px;
     
 }
-
+.select3 {
+    position: relative;
+    font-size:15px;
+    left:200px;
+}
 .graph3 {
     height:1720 px;
 }
