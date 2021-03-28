@@ -78,7 +78,7 @@ d3.json("data.json", type).then(data => {
             .data(region_data)
             .enter()
             .append('text')
-            .text(function (d) { console.log(d); return d.data.genre })
+            .text(function (d) { /*console.log(d);*/ return d.data.genre })
             .style("text-anchor", "middle")
             .style("font-size", 12);
 
