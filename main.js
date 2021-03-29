@@ -24,7 +24,7 @@ var svg1 = d3.select("#graph1")
         "translate(" + margin.left + "," + margin.top + ")");
 let countRef = svg1.append("g");
 
-const all_years = ['1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+const all_years = ['1980', '1981']//, '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'];
 
 d3.select("#selectButton1")
     .selectAll('myOptions')
@@ -56,28 +56,34 @@ let color = d3.scaleOrdinal()
 
 svg1.append("text")
     .attr("transform", `translate(${(width - margin.left - margin.right) / 2},
-${(height - margin.top - margin.bottom) + 15})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
+${(height - margin.top - margin.bottom) + 20})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
     .style("text-anchor", "middle")
+    .attr("font-size", 18)
     .text("Global Sells Count");
 
 // TODO: Add y-axis label
 svg1.append("text")
     .attr("transform", `translate(-150, ${(height - margin.top - margin.bottom) / 2})`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
     .style("text-anchor", "middle")
+    .attr("font-size", 18)
     .text("Game");
 
 // TODO: Add chart title
 svg1.append("text")
     .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
     .style("text-anchor", "middle")
-    .style("font-size", 15)
-    .text("Top 10 Best Game Seller Chart");
+    .style("font-size", 18)
+    .text("Top 10 Best Game Sellers Chart");
+
+function checkYear(year) {
+    // Keep valid data
+    return year >= year1 && year <= year2;
+}
 function update(year1, year2) {
 
-    function checkYear(year) {
-        // Keep valid data
-        return year >= year1 && year <= year2;
-    }
+
+    svg1.selectAll("rect").remove();
+    svg1.selectAll("text").remove();
 
     d3.csv("./data/video_games.csv").then(function (data) {
         var dataFilter = data.filter(function (d) {

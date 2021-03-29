@@ -11,6 +11,35 @@ html, body, text, button, label, h3, h5 {
     text-align: center;
 }
 
+body {
+    transition: all 1s;
+    background-color: #efefef;
+}
+
+
+.charts {
+    padding-left:20px;
+    padding-right:20px;
+    background-color: #fffFff;
+    margin:1.5em;
+    border-radius:10px;
+    height:480px;
+    width:auto;
+}
+
+.chart1, .chart2, .chart3{
+    border-top: 2px solid #777;
+    padding-top:20px;
+
+}
+
+.chartSections{
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-top:5px;
+    font-size:18px;
+}
+
 select {
     color: #555;
     font-size: inherit;
@@ -27,14 +56,24 @@ select {
     left:200px;
     
 }
+
+#regionButton {
+    margin:3px;
+}
+
+.select2{
+    /*     align:center; */
+      display: flex;
+      justify-content: center;
+    }
+
+    
 .select3 {
     position: relative;
     font-size:15px;
     left:200px;
 }
-.graph3 {
-    height:1720 px;
-}
+
 
 #pie_title {
     font-size:15px;
@@ -52,9 +91,11 @@ div.tooltip {
     border-radius: 8px;		
     position: absolute;			
     pointer-events: none;	
-    width: 70px;					
-    height: 33px;					
+    width: 100px;					
+    height: 53px;					
     padding: 2px;	
 }
+
+
 
 /* Include any custom CSS styling here! */

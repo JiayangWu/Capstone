@@ -20,29 +20,56 @@
         <h3>Assignment 6 &laquo; Data Visualization Dashboard &raquo;</h3>
     </div>
     <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
-    <div class="select1">
-        From:
-        <select id="selectButton1"></select>
-        To:
-        <select id="selectButton2"></select>
-    </div>
+
 
     <div class="row">
         <div class="col-lg-6">
+            <div class="charts">
+                <div class="chartSections">
+                    <h4> Q1. Top Games in History</h4>
+                </div>
+                <div class="chart1">
+                    <div class="select1">
+                        From:
+                        <select id="selectButton1"></select>
+                        To:
+                        <select id="selectButton2"></select>
+                    </div>
+                    <div id="graph1"></div>
+                </div>
 
-            <div id="graph1"></div>
-            <div class="select3">Genre: <select id="selectButton3"></select></div>
-            <div id="graph3"></div><br />
+            </div>
+            <div class="charts">
+                <div class="chartSections">
+                    <h4> Q3. Top Publishers by Genre</h4>
+                </div>
+
+
+                <div class="chart3">
+                    <div class="select3">Genre: <select id="selectButton3"></select></div>
+                    <div id="graph3"></div>
+                </div>
+            </div>
+
         </div>
         <div class="col-lg-6">
-            <div id="pie_title">Genre Sales Broken Down by Region</div>
-            <div class="select2" id="regionButton">
-                <input type="radio" name="region" value="NA" checked> NA
-                <input type="radio" name="region" value="EU"> EU
-                <input type="radio" name="region" value="JP"> JP
-                <input type="radio" name="region" value="Other"> Other
+            <div class="charts">
+                <div class="chartSections">
+                    <h4> Q2. Genre Sales by Region(NA, EU, JP and others)</h4>
+                </div>
+                <div class="chart2">
+                    <div id="pie_title">Genre Sales Broken Down by Region</div>
+                    <div class="select2">
+                        <input type="radio" id="regionButton" name="region" value="NA" checked> NA
+                        <input type="radio" id="regionButton" name="region" value="EU"> EU
+                        <input type="radio" id="regionButton" name="region" value="JP"> JP
+                        <input type="radio" id="regionButton" name="region" value="Other"> Other
+                    </div>
+                    <div id="graph2"></div>
+                </div>
+
             </div>
-            <div id="graph2"></div>
+
         </div>
     </div>
     <!--Feel free to add more JavaScript files as needed-->

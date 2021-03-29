@@ -96,7 +96,7 @@ d3.json("data.json", type).then(data => {
                 console.log(d);
                 div.transition()
                     .style("opacity", .88);
-                div.html(d.data.genre + "<br/>" + getPercentage(parseFloat(d.data.count), total_sales) + "%")
+                div.html(d.data.genre + "<br/> Sales: " + parseFloat(d.data.count).toFixed(2) + "M<br/> Percent: " + getPercentage(parseFloat(d.data.count), total_sales) + "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
