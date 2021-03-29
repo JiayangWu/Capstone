@@ -3,7 +3,7 @@ const radius = Math.min(width, height) / 2;
 const svg2 = d3.select("#graph2")
     .append("svg")
     .attr("width", width)
-    .attr("height", 400)
+    .attr("height", 640)
     .append("g")
     .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
@@ -35,10 +35,9 @@ const labelArc2 = d3.arc()
     .innerRadius(radius * 0.96)
     .outerRadius(radius * 0.96)
 
-
-
-function midAngle(d) {
-    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+function getMidAngle(d) {
+    var mid_angle = (d.endAngle - d.startAngle) / 2 + d.startAngle;
+    return mid_angle;
 }
 
 function type(d) {
@@ -52,8 +51,9 @@ function type(d) {
 
 function resetChart() {
     console.log(svg2);
-
 }
+
+let chart2_title = svg2.append("text");
 
 function getPercentage(count, total) {
     return 100 * ((count / total).toFixed(2))
@@ -67,7 +67,13 @@ d3.json("data.json", type).then(data => {
         svg2.selectAll("path").remove();
         svg2.selectAll("polyline").remove();
 
-
+        var chart2_title_string;
+        if (val != "other") {
+            chart2_title_string = val;
+        }
+        else {
+            chart2_title_string = "Other Regions"
+        }
 
         var region_data = pie(data[val]);
         console.log(region_data);
@@ -115,17 +121,23 @@ d3.json("data.json", type).then(data => {
             .append('text')
             .text(function (d) { return d.data.genre })
             .style("text-anchor", "middle")
-            .style("font-size", 12);
+            .style("font-size", 15);
 
         texts.attr('transform', function (d) {
             var pos = outerArc.centroid(d);
             // console.log(d, pos);
-            var mid_angle = midAngle(d);
+            var mid_angle = getMidAngle(d);
             if (d.endAngle >= 5.8) {
                 pos[1] += 13;
             }
             if (d.index == 11) {
-                pos[1] -= 10;
+                pos[1] -= 8;
+            }
+            if (d.index == 10) {
+                pos[1] += 5;
+            }
+            if (d.index == 9) {
+                pos[1] += 13;
             }
             pos[0] = radius * 1.2 * (mid_angle < Math.PI ? 1 : -1);
             return 'translate(' + pos + ')';
@@ -149,11 +161,19 @@ d3.json("data.json", type).then(data => {
                     posB[1] += 13;
                 }
                 if (d.index == 11) {
-                    posC[1] -= 10;
-                    posB[1] -= 10;
+                    posC[1] -= 8;
+                    posB[1] -= 8;
                 }
-                var midangle = midAngle(d)
-                posC[0] = radius * 1.0 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
+                if (d.index == 10) {
+                    posC[1] += 5;
+                    posB[1] += 5;
+                }
+                if (d.index == 9) {
+                    posC[1] += 13;
+                    posB[1] += 13;
+                }
+                var mid_angle = getMidAngle(d)
+                posC[0] = radius * 1.0 * (mid_angle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
                 return [posA, posB, posC]
             })
 

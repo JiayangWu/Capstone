@@ -85,7 +85,8 @@ ${(height - margin.top - margin.bottom) + 50})`)       // HINT: Place this at th
             .style("text-anchor", "middle")
             .style("font-size", 15)
             .text("Top 5 Best Publishers of " + genre + " Games from 1980 to 2020");
-        svg3.append("g")
+        
+            svg3.append("g")
             .attr("transform", "translate(0, 222)")
             .call(d3.axisBottom(x3))
             .selectAll("text")

@@ -61,7 +61,7 @@ select {
     margin:3px;
 }
 
-.select2{
+.select2, #graph2{
     /*     align:center; */
       display: flex;
       justify-content: center;
@@ -74,7 +74,17 @@ select {
     left:200px;
 }
 
+/* #graph2 {
+    padding-top:15px;
+} */
 
+svg {
+/*     padding-top:50px; */
+margin:20px;
+}
+.select2 {
+    padding-top:10px;
+}
 #pie_title {
     font-size:15px;
 /*     font-weight:bold; */
@@ -96,6 +106,8 @@ div.tooltip {
     padding: 2px;	
 }
 
-
+#pie_title {
+    font-size:18px;
+}
 
 /* Include any custom CSS styling here! */
