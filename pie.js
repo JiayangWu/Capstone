@@ -56,7 +56,7 @@ function resetChart() {
 }
 
 function getPercentage(count, total) {
-    return 100 * (count / total).toFixed(2)
+    return 100 * ((count / total).toFixed(2))
 }
 
 d3.json("data.json", type).then(data => {
@@ -95,8 +95,8 @@ d3.json("data.json", type).then(data => {
             .on("mouseover", function (d) {
                 console.log(d);
                 div.transition()
-                    .style("opacity", .95);
-                div.html(d.data.genre + "<br/>" + getPercentage(parseFloat(d.data.count), total_sales))
+                    .style("opacity", .88);
+                div.html(d.data.genre + "<br/>" + getPercentage(parseFloat(d.data.count), total_sales) + "%")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })

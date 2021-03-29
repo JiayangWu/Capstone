@@ -45,17 +45,16 @@ select {
 }
 
 div.tooltip {	
-    text-align: center;		
+    text-align: center;	
+        font: 13px;		
+    background: rgb(168, 203, 247);	
+    border: 3px;		
+    border-radius: 8px;		
     position: absolute;			
-    	
-    width: 60px;					
-    height: 28px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
-    background: lightsteelblue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
+    pointer-events: none;	
+    width: 70px;					
+    height: 33px;					
+    padding: 2px;	
 }
 
 /* Include any custom CSS styling here! */

@@ -17,8 +17,8 @@ d3.select("#selectButton3")
     .data(all_genres)
     .enter()
     .append('option')
-    .text(function (d) { return d; }) // text showed in the menu
-    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+    .text(function (d) { return d; })
+    .attr("value", function (d) { return d; })
 
 // ['Sports', 'Misc', 'Racing', 'Strategy', 'Platform', 'Action', 'Shooter', 
 // 'RolePlaying', 'Puzzle', 'Adventure', 'Simulation', 'Fighting']
