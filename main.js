@@ -24,7 +24,7 @@ var svg1 = d3.select("#graph1")
         "translate(" + margin.left + "," + margin.top + ")");
 let countRef = svg1.append("g");
 
-const all_years = ['1980', '1981']//, '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'];
+const all_years = ['1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'];
 
 d3.select("#selectButton1")
     .selectAll('myOptions')
@@ -56,34 +56,40 @@ let color = d3.scaleOrdinal()
 
 svg1.append("text")
     .attr("transform", `translate(${(width - margin.left - margin.right) / 2},
-${(height - margin.top - margin.bottom) + 20})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
+${(height - margin.top - margin.bottom) + 25})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
     .style("text-anchor", "middle")
-    .attr("font-size", 18)
-    .text("Global Sells Count");
+    .style("font-size", 18)
+    .text("Global Sells Counts(In Millions)");
 
 // TODO: Add y-axis label
 svg1.append("text")
     .attr("transform", `translate(-150, ${(height - margin.top - margin.bottom) / 2})`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
     .style("text-anchor", "middle")
-    .attr("font-size", 18)
+    .style("font-size", 18)
     .text("Game");
 
-// TODO: Add chart title
-svg1.append("text")
-    .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
-    .style("text-anchor", "middle")
-    .style("font-size", 18)
-    .text("Top 10 Best Game Sellers Chart");
-
-function checkYear(year) {
-    // Keep valid data
-    return year >= year1 && year <= year2;
-}
+let chart1_title = svg1.append("text");
 function update(year1, year2) {
+    // svg1.selectAll("rect").remove();
+    // svg1.selectAll("text").remove();
+    var chart1_title_string;
+    if (year1 == year2) {
+        chart1_title_string = " in " + year1;
+    }
+    else {
+        chart1_title_string = " from " + year1 + " to " + year2;
+    }
+    // TODO: Add chart title
+    chart1_title
+        .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
+        .style("text-anchor", "middle")
+        .style("font-size", 18)
+        .text("Top 10 Best Game Sellers" + chart1_title_string);
 
-
-    svg1.selectAll("rect").remove();
-    svg1.selectAll("text").remove();
+    function checkYear(year) {
+        // Keep valid data
+        return year >= year1 && year <= year2;
+    }
 
     d3.csv("./data/video_games.csv").then(function (data) {
         var dataFilter = data.filter(function (d) {
@@ -125,14 +131,15 @@ function update(year1, year2) {
             .style("text-anchor", "start")
             .text(function (d) { return d.Global_Sales });           // HINT: Get the count of the artist
 
-
+        bars.exit().remove();
+        counts.exit().remove();
     });
 }
 
 var g1_s1_year_value = 1980;
-var g1_s2_year_value = 1981;
+var g1_s2_year_value = 1980;
 
-update(1980, 1981);
+update(1980, 1980);
 
 d3.select("#selectButton1").on("change", function (d) {
     // get new value from the select button
@@ -165,14 +172,14 @@ let mouseover_barplot = function (d) {
     // console.log(d);
     // console.log(color(d.Global_Sales));
     svg1.select(`#rect-${d.Rank}`).attr("fill", function (d) {
-        return darkenColor(color(d.Global_Sales), 0.5);
+        return darkenColor(color(d.Name), 0.5);
     });
 };
 
 // Restore bar fill to original color on mouseout
 let mouseout_barplot = function (d) {
     svg1.select(`#rect-${d.Rank}`).attr("fill", function (d) {
-        return color(d.Global_Sales)
+        return color(d.Name)
     });
 };
 
