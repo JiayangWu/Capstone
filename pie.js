@@ -19,6 +19,10 @@ const arc = d3.arc()
     .innerRadius(0)
     .outerRadius(radius);
 
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 var outerArc = d3.arc()
     .innerRadius(radius * 0.95)
     .outerRadius(radius * 0.95)
@@ -51,6 +55,10 @@ function resetChart() {
 
 }
 
+function getPercentage(count, total) {
+    return 100 * (count / total).toFixed(2)
+}
+
 d3.json("data.json", type).then(data => {
     console.log(data);
     function update(val = this.value) {
@@ -59,8 +67,21 @@ d3.json("data.json", type).then(data => {
         svg2.selectAll("path").remove();
         svg2.selectAll("polyline").remove();
 
+
+
         var region_data = pie(data[val]);
         console.log(region_data);
+
+
+        var i;
+        var total_sales = 0;
+        for (i = 0; i < 11; i++) {
+            total_sales += parseFloat(region_data[i].data.count);
+        }
+        // const total_sales = d3.sum(region_data.count);
+
+        console.log(total_sales);
+
 
         const paths = svg2.selectAll("path")
             .data(region_data);
@@ -71,7 +92,21 @@ d3.json("data.json", type).then(data => {
             .attr("stroke", "white")
             .attr("stroke-width", "3px")
             .style("opacity", 0.85)
+            .on("mouseover", function (d) {
+                console.log(d);
+                div.transition()
+                    .style("opacity", .95);
+                div.html(d.data.genre + "<br/>" + getPercentage(parseFloat(d.data.count), total_sales))
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
             .each(function (d) { this._current = d; });
+
 
         var texts = svg2
             .selectAll('text')
@@ -95,8 +130,6 @@ d3.json("data.json", type).then(data => {
             pos[0] = radius * 1.2 * (mid_angle < Math.PI ? 1 : -1);
             return 'translate(' + pos + ')';
         });
-
-
 
         var poly_lines = svg2
             .selectAll('polyline')
