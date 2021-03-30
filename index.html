@@ -11,9 +11,14 @@
     <!-- <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script> -->
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <!-- <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <!-- <script src="https://unpkg.com/d3@4"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script> -->
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <!-- <img src="./mario.jpg" alt="Girl in a jacket"> -->
+
 </head>
 
 <body>
@@ -53,7 +58,7 @@
         <div class="col-lg-6">
             <div class="charts">
                 <div class="chartSections">
-                    <h4> Q2. Genre Sales by Region(NA, EU, JP and others)</h4>
+                    <h4> Q2. Genre Sales by Region(NA, EU, JP and Other)</h4>
                 </div>
                 <div class="chart2">
                     <div id="pie_title">Genre Sales Broken Down by Region</div>
@@ -68,18 +73,26 @@
             </div>
 
             <div class="charts">
-                
+                <div class="chartSections">
+                    <h4> Q2. The Most Popular Genre By Region(NA, EU, JP and Other)</h4>
+                </div>
+                <div class="chart2">
+                    <div id="graph4"></div>
+                </div>
+
             </div>
         </div>
         <div class="written_questions">
             <div class="chartSections">
-                <h4> Q4. Written Questions</h4>
-                <p>
-                    Extra Credit:
-                    1. In the tooltip of my Q2 Pie chart, I have a dynamic stats calculation module that computes and
-                    presents the percentage of one genre's sale compared to all sales in a region.
 
+                <h4>Extra Credit:</h4>
+                <p>
+                    1. In the tooltip of my Q2 Pie chart, I have a dynamic stats calculation module that computes and
+                    presents the percentage of one genre's sale compared to all sales in a region.</br>
+                    2. I also created a Map chart by topojson to answer Q2. The map uses orange to show regions where
+                    Action is the most popular genre and uses green to show regions where RPG is the most popular genre.
                 </p>
+                <h4> Q4. Written Questions</h4>
                 <p>
                     1. The first question is answered by a bar plot that shows top 10 best game sellers between 1980
                     - 2020.</br>
@@ -125,6 +138,7 @@
         <script type="text/javascript" src="main.js"></script>
         <script type="text/javascript" src="pie.js"></script>
         <script type="text/javascript" src="bar.js"></script>
+        <script type="text/javascript" src="map.js"></script>
 </body>
 
 </html>

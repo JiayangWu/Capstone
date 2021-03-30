@@ -24,13 +24,18 @@ body {
     padding-left:20px;
     padding-right:20px;
     background-color: #fffFff;
-    margin:1.5em;
+/*     margin:2em; */
+    margin-left:2em;
+    margin-bottom:3.6em;
     border-radius:10px;
     height:480px;
     width:auto;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2), 0 6px 18px 0 rgba(0, 0, 0, 0.18);
+/*     margin-top:px; */
+/* padding-top:20px; */
 }
 
-.chart1, .chart2, .chart3{
+.chart1, .chart2, .chart3, .chart4{
     border-top: 2px solid #777;
     padding-top:20px;
 
@@ -116,4 +121,8 @@ div.tooltip {
 /* Include any custom CSS styling here! */
 .written_questions{
     padding:100px;
+}
+
+#chart2 {
+    padding-left:10px;
 }

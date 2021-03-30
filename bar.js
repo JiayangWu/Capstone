@@ -72,7 +72,7 @@ function update3(genre) {
         data3 = data3[genre];
         // console.log(data3);
 
-        // svg3.selectAll("rect").remove();
+        svg3.selectAll("rect").remove();
         // svg3.selectAll("text").remove();
         // x.domain([0, data3[0].Global_Sales])
         x3.domain(data3.map(function (d) { return d.publisher }));
