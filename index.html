@@ -12,15 +12,16 @@
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script> -->
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 </head>
 
 <body>
     <div class="header">
         <h3>Assignment 6 &laquo; Data Visualization Dashboard &raquo;</h3>
+        <h4 id="subtitle">Video Game Sales Datasets</h4>
     </div>
     <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
-
 
     <div class="row">
         <div class="col-lg-6">
@@ -37,14 +38,11 @@
                     </div>
                     <div id="graph1"></div>
                 </div>
-
             </div>
             <div class="charts">
                 <div class="chartSections">
-                    <h4> Q3. Top Publishers by Genre</h4>
+                    <h4> Q3. Top Publishers by Genre(1980-2020)</h4>
                 </div>
-
-
                 <div class="chart3">
                     <div class="select3">Genre: <select id="selectButton3"></select></div>
                     <div id="graph3"></div>
@@ -67,15 +65,66 @@
                     </div>
                     <div id="graph2"></div>
                 </div>
+            </div>
 
+            <div class="charts">
+                
+            </div>
+        </div>
+        <div class="written_questions">
+            <div class="chartSections">
+                <h4> Q4. Written Questions</h4>
+                <p>
+                    Extra Credit:
+                    1. In the tooltip of my Q2 Pie chart, I have a dynamic stats calculation module that computes and
+                    presents the percentage of one genre's sale compared to all sales in a region.
+
+                </p>
+                <p>
+                    1. The first question is answered by a bar plot that shows top 10 best game sellers between 1980
+                    - 2020.</br>
+                    My pie chart shows a clear genre sales breakdown for four regions. Users can hover over the
+                    graph and see the sales and real-time calculated percentage data by a tooltip.
+                    </br>
+                    For question 3, I used another vertical barplot to present the top 5 best publishers for any
+                    genre from 1980 - 2020.
+                </p></br>
+                <p> 2. (1). Data visualizations created by D3.JS is portable. Since they are running on a browser,
+                    anyone
+                    can access the dashboard through PC, laptop, phone or pad.</br>
+                    (2). D3 also supports extensive charts like pie, bar, map, flow etc..</br>
+                    (3). D3 offers high data flexibility to different formats of data storage, like .csv and .json
+                    files.
+                </p>
+                <p>
+                    3.(1). D3 has a variety of versions(from v3-v6) and the compatibility is a big concern.</br>
+                    (2). D3 is a JavaScript library while normally data scientists use R or Python since they have
+                    more libraries for statistical analysis and support faster calculation of big datasets.</br>
+                    (3). D3 has a steep initial learning curve so it's unfriendly for new learners especially for
+                    those who lack front-end programming experience.
+                </p>
+                <p>
+                    4. I think people with normal vision might find my dashboard accessible while it's more difficult
+                    for people with blindness or colorblindness to access. Inspired by dos and don'ts section of "A
+                    Comprehensive Guide to Accessible Data Visualization", in the design stage of my first chart, I
+                    delibrately used dropdown inputs instead of a fancy slider to receive year selection from users
+                    since a dropdown input can be used by screen readers. Also, for my pie chart, I added white strokes
+                    to separate between different portions to provide a more clear view.
+                </p>
+                <p>
+                    5. I learned from "Why Accessibility Is at the Heart of Data Visualization" that one approach for
+                    presenting data as nonverbal sounds to blind people is called Sonification. However, I didn't add
+                    that feature in my dashboard since I am new in this area and I only have limited time to finish this
+                    assignment.
+
+                </p>
             </div>
 
         </div>
-    </div>
-    <!--Feel free to add more JavaScript files as needed-->
-    <script type="text/javascript" src="main.js"></script>
-    <script type="text/javascript" src="pie.js"></script>
-    <script type="text/javascript" src="bar.js"></script>
+        <!--Feel free to add more JavaScript files as needed-->
+        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="pie.js"></script>
+        <script type="text/javascript" src="bar.js"></script>
 </body>
 
 </html>

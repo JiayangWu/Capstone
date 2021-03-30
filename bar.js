@@ -23,6 +23,7 @@ d3.select("#selectButton3")
 // ['Sports', 'Misc', 'Racing', 'Strategy', 'Platform', 'Action', 'Shooter', 
 // 'RolePlaying', 'Puzzle', 'Adventure', 'Simulation', 'Fighting']
 function type(d) {
+    // used for importing json data
     d.Sports = Number(d.Sports);
     d.Misc = Number(d.Misc);
     d.Racing = Number(d.Racing);
@@ -54,47 +55,57 @@ var label_line = d3.line()
 var y3 = d3.scaleLinear()
     .range([height - `${margin.top}` - `${margin.bottom}`, 0])
 
+svg3.append("text")
+    .attr("transform", `translate(${(width - margin.left - margin.right) / 2},
+${(height - margin.top - margin.bottom) + 60})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
+    .style("text-anchor", "middle")
+    .style("font-size", 18)
+    .text("Publisher");
+
+let y3_desc = svg3.append("text");
+let x3_desc = svg3.append("text");
+
+let x3_publishers = svg3.append("g");
 function update3(genre) {
 
     d3.json("genre.json", type).then(data3 => {
         data3 = data3[genre];
         // console.log(data3);
 
-        svg3.selectAll("rect").remove();
-        svg3.selectAll("text").remove();
+        // svg3.selectAll("rect").remove();
+        // svg3.selectAll("text").remove();
         // x.domain([0, data3[0].Global_Sales])
         x3.domain(data3.map(function (d) { return d.publisher }));
         y3.domain([0, d3.max(data3, function (d) { return d.sales })]);
 
         // Add x-axis label
-        svg3.append("text")
-            .attr("transform", `translate(${(width - margin.left - margin.right) / 2},
-${(height - margin.top - margin.bottom) + 50})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
-            .style("text-anchor", "middle")
-            .text("Publisher");
 
-        // TODO: Add y-axis label
-        svg3.append("text")
-            .attr("transform", `translate(-100, ${(height - margin.top - margin.bottom) / 2})`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
-            .style("text-anchor", "middle")
-            .text(genre + " Games Sales");
+        // Add y-axis label
 
-        // TODO: Add chart title
-        svg3.append("text")
-            .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
+        y3_desc.attr("transform", `translate(-40, ${(height - margin.top - margin.bottom) / 2})rotate(-90)`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
             .style("text-anchor", "middle")
-            .style("font-size", 15)
-            .text("Top 5 Best Publishers of " + genre + " Games from 1980 to 2020");
-        
-            svg3.append("g")
-            .attr("transform", "translate(0, 222)")
+            .style("font-size", 18)
+
+            .text(genre + " Games Sales(in Millions)");
+
+        // Add chart title
+
+        x3_desc.attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-25})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
+            .style("text-anchor", "middle")
+            .style("font-size", 18)
+            .text("Top 5 Best Publishers of " + genre + " Games(1980-2020)");
+
+        // x-label
+        x3_publishers
+            .attr("transform", "translate(0, 232)")
             .call(d3.axisBottom(x3))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-30)")
             .style("text-anchor", "end");
 
 
-        y_labels.call(d3.axisLeft(y3).tickSizeOuter(0));
+        y_labels.call(d3.axisLeft(y3).tickSizeOuter(0))
+            .attr("transform", "translate(0,-18)");
 
         var bar3 = svg3.selectAll("rect")
             .data(data3)
@@ -103,11 +114,13 @@ ${(height - margin.top - margin.bottom) + 50})`)       // HINT: Place this at th
             .attr("x", function (d) { return x3(d.publisher); })
             .attr("y", function (d) { return y3(d.sales); })
             .attr("width", x3.bandwidth())
-            .attr("height", function (d) { return 222 - y3(d.sales); })
-            .attr("fill", function (d) { return color(d.Name); })
+            .attr("height", function (d) { return 232 - y3(d.sales); })
+            .attr("fill", "#66a0e2");
 
         bar3.exit().remove();
-
+        y3_desc.exit().remove();
+        x3_desc.exit().remove();
+        x3_publishers.exit().remove();
     });
 }
 

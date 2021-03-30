@@ -10,10 +10,13 @@ html, body, text, button, label, h3, h5 {
     padding-top: 20px;
     text-align: center;
 }
+#subtitle{
+    text-align: center;
+}
 
 body {
     transition: all 1s;
-    background-color: #efefef;
+    background-color: #d8e8f7;
 }
 
 
@@ -111,3 +114,6 @@ div.tooltip {
 }
 
 /* Include any custom CSS styling here! */
+.written_questions{
+    padding:100px;
+}
