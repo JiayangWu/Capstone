@@ -10,6 +10,7 @@ var svg3 = d3.select("#graph3")
         "translate(" + margin.left + "," + margin.top + ")");
 let countRef3 = svg3.append("g");
 
+// all genres
 const all_genres = ['Sports', 'Misc', 'Racing', 'Strategy', 'Platform', 'Action', 'Shooter', 'RolePlaying', 'Puzzle', 'Adventure', 'Simulation', 'Fighting']
 
 d3.select("#selectButton3")
@@ -70,7 +71,7 @@ function update3(genre) {
 
     d3.json("genre.json", type).then(data3 => {
         data3 = data3[genre];
-        // console.log(data3);
+        console.log(data3);
 
         svg3.selectAll("rect").remove();
         // svg3.selectAll("text").remove();
@@ -78,18 +79,13 @@ function update3(genre) {
         x3.domain(data3.map(function (d) { return d.publisher }));
         y3.domain([0, d3.max(data3, function (d) { return d.sales })]);
 
-        // Add x-axis label
-
-        // Add y-axis label
-
+        // y-label
         y3_desc.attr("transform", `translate(-40, ${(height - margin.top - margin.bottom) / 2})rotate(-90)`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
             .style("text-anchor", "middle")
             .style("font-size", 18)
-
             .text(genre + " Games Sales(in Millions)");
 
         // Add chart title
-
         x3_desc.attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-25})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
             .style("text-anchor", "middle")
             .style("font-size", 18)

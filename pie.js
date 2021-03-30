@@ -41,6 +41,7 @@ function getMidAngle(d) {
 }
 
 function type(d) {
+    // for properly read data from .json file
     d.NA = Number(d.NA);
     d.EU = Number(d.EU);
     d.JP = Number(d.JP);
@@ -56,11 +57,12 @@ function resetChart() {
 let chart2_title = svg2.append("text");
 
 function getPercentage(count, total) {
+    // dynamically calculate the percentage of one genre compared with total sales
     return 100 * ((count / total).toFixed(2))
 }
 
 d3.json("data.json", type).then(data => {
-    console.log(data);
+    // console.log(data);
     function update(val = this.value) {
         // console.log(val, "dsadass");
         svg2.selectAll("text").remove();
@@ -101,6 +103,7 @@ d3.json("data.json", type).then(data => {
             .on("mouseover", function (d) {
                 console.log(d);
                 div.transition()
+                    .duration(130)
                     .style("opacity", .88);
                 div.html(d.data.genre + "<br/> Sales: " + parseFloat(d.data.count).toFixed(2) + "M<br/> Percent: " + getPercentage(parseFloat(d.data.count), total_sales) + "%")
                     .style("left", (d3.event.pageX) + "px")
@@ -108,7 +111,7 @@ d3.json("data.json", type).then(data => {
             })
             .on("mouseout", function (d) {
                 div.transition()
-                    .duration(500)
+                    .duration(400)
                     .style("opacity", 0);
             })
             .each(function (d) { this._current = d; });
@@ -127,6 +130,7 @@ d3.json("data.json", type).then(data => {
             var pos = outerArc.centroid(d);
             // console.log(d, pos);
             var mid_angle = getMidAngle(d);
+            // mannually adjust the pos of labels due to small portion
             if (d.endAngle >= 5.8) {
                 pos[1] += 13;
             }
@@ -156,6 +160,7 @@ d3.json("data.json", type).then(data => {
                 var posA = labelArc1.centroid(d) // line insertion in the slice
                 var posB = labelArc2.centroid(d)
                 var posC = labelArc2.centroid(d); // Label position = almost the same as posB
+                 // mannually adjust the pos of labels due to small portion
                 if (d.endAngle >= 5.8) {
                     posC[1] += 13;
                     posB[1] += 13;

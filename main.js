@@ -22,10 +22,13 @@ var svg1 = d3.select("#graph1")
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
+
 let countRef = svg1.append("g");
 
+// all valid years
 const all_years = ['1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'];
 
+// button for year1
 d3.select("#selectButton1")
     .selectAll('myOptions')
     .data(all_years)
@@ -34,6 +37,7 @@ d3.select("#selectButton1")
     .text(function (d) { return d; }) // text showed in the menu
     .attr("value", function (d) { return parseInt(d); }) // corresponding value returned by the button
 
+// button for year2
 d3.select("#selectButton2")
     .selectAll('myOptions')
     .data(all_years)
@@ -72,6 +76,11 @@ let chart1_title = svg1.append("text");
 function update(year1, year2) {
     // svg1.selectAll("rect").remove();
     // svg1.selectAll("text").remove();
+
+    /* properly set the title in the chart of Q1,
+       if only 1 year, return "in 20xx",
+       otherwise, return "from 19xx to 20xx"
+    */
     var chart1_title_string;
     if (year1 == year2) {
         chart1_title_string = " in " + year1;
@@ -79,6 +88,7 @@ function update(year1, year2) {
     else {
         chart1_title_string = " from " + year1 + " to " + year2;
     }
+    
     // TODO: Add chart title
     chart1_title
         .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier

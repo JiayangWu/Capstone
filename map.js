@@ -2,44 +2,38 @@ var svg4 = d3.select("#graph4")
     .append("svg")
     .attr("width", 1000)
     .attr("height", 1000)
-    // .attr("left", -500)
-    .append("g")
-    .attr("transform", (0, 0));
+    .append("g");
 
 var projection = d3.geoNaturalEarth()
     .scale(width / 1.3 / Math.PI)
     .translate([width / 2, height / 2])
 
 console.log("dsadsadas");
-// Load external data and boot
-// var svg = d3.select("body").append("svg");
+
 var path = d3.geoPath().projection(d3.geoMercator());
-// d3.json("world.json").then((data) => {
+
 d3.json("world.json").then((world) => {
-    // if (error) throw error;
+
     // console.log(world);
-    // console.log("czxczx");
+
     var map_data = topojson.feature(world, world.objects.countries).features;
     console.log(map_data);
-    // svg4.append("g").selectAll("path")
-    //     .data(map_data)
-    //     .enter().append("path");
-    // .attr("d", path);
+
     svg4.append("g")
         .selectAll("path")
         .data(map_data)
         .enter().append("path")
         .attr("fill", (d) => {
             if (d.id == "JPN")
-                return "#a6d854";
+                return "#a6d854"; // Green for JP
             else {
-                return "#fc8d62";
+                return "#fc8d62"; // Orange for others
             }
         })
         .attr("d", d3.geoPath()
             .projection(projection)
         )
-        .style("stroke", "#fff");
+        .style("stroke", "#FFFFFF");
 
     // .attr("transform", (-1000, 0));/
     // .attr("left", -400);
@@ -70,6 +64,4 @@ d3.json("world.json").then((world) => {
         .text("Regions where RPG is the most popular genre(Only JP)")
         .style("font-size", "15px")
         .attr("alignment-baseline", "middle")
-
-
 });
