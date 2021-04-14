@@ -1,4 +1,4 @@
-State_Code,Tweets_Cnt,Tweets_Cnt_Trump,Tweets_Cnt_Biden,Likes,Retweets,Participation rate,Avg of Follower per tweet user,Turnout rates,Blue_Votes_Percent,Blue_Votes,Red_Votes_Percent,Red_Votes,Winner,State_Name,State_Code2,Population
+State_Code,Tweets_Cnt,Tweets_Cnt_Trump,Tweets_Cnt_Biden,Likes,Retweets,Participation rate,Avg of Follower per tweet user,Turnout_Rate,Blue_Votes_Percent,Blue_Votes,Red_Votes_Percent,Red_Votes,Winner,State_Name,State_Code2,Population
 AK,740,311,429,426.2,112.4,10.12093145,3096.216216,68.4,42.8,"153,778",52.8,"189,951",R,Alaska,AK,731158
 AL,1738,860,878,1839.8,432.2,3.480623513,6955.165791,63.1,36.6,"849,624",62,"1,441,170",R,Alabama,AL,4921532
 AR,1205,687,518,591.2,166.8,3.570342007,4821.268022,55.9,34.8,"423,932",62.4,"760,647",R,Arkansas,AR,3030522
