@@ -101,7 +101,7 @@ d3.csv("./data/full_dataset.csv").then(function (data) {
     y6_labels.call(d3.axisLeft(y6).tickSizeOuter(0))
         .attr("transform", "translate(0,0)");
 
-    var bar5 = svg6.selectAll("rect")
+    var bar6 = svg6.selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
@@ -118,7 +118,7 @@ d3.csv("./data/full_dataset.csv").then(function (data) {
 
     // svg6.append("g").call(x6_axis).attr("transform", "translate(0,500");
 
-    bar5.exit().remove();
+    bar6.exit().remove();
     y6_desc.exit().remove();
     title6.exit().remove();
     x6_axis_g.exit().remove();
