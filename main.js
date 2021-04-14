@@ -47,10 +47,10 @@ d3.select("#selectButton2")
     .attr("value", function (d) { return parseInt(d); }) // corresponding value returned by the button
 
 let x = d3.scaleLinear()
-    .range([0, width - `${margin.left}` - `${margin.right}`]);
+    .range([0, width - margin.left - margin.right]);
 
 let y = d3.scaleBand()
-    .range([0, height - `${margin.top}` - `${margin.bottom}`])
+    .range([0, height - margin.top - margin.bottom])
     .padding(0.1);  // Improves readability
 
 let y_axis_label = svg1.append("g").attr("id", "y1_label");

@@ -41,7 +41,7 @@ function type(d) {
 }
 
 var x3 = d3.scaleBand()
-    .range([0, width - `${margin.left}` - `${margin.right}`])
+    .range([0, width])
     .padding(0.2);
 
 let color3 = d3.scaleOrdinal()
@@ -69,15 +69,15 @@ let x3_desc = svg3.append("text");
 let x3_publishers = svg3.append("g");
 function update3(genre) {
 
-    d3.json("genre.json", type).then(data3 => {
-        data3 = data3[genre];
+    d3.csv("./data/full_dataset.csv").then(function (data3) {
+        // data3 = data3[genre];
         console.log(data3);
 
         svg3.selectAll("rect").remove();
         // svg3.selectAll("text").remove();
         // x.domain([0, data3[0].Global_Sales])
-        x3.domain(data3.map(function (d) { return d.publisher }));
-        y3.domain([0, d3.max(data3, function (d) { return d.sales })]);
+        x3.domain(data3.map(function (d) { return d.State_Code }));
+        y3.domain([0.5, d3.max(data3, function (d) { return parseInt(d.Tweets_Cnt) })]);
 
         // y-label
         y3_desc.attr("transform", `translate(-40, ${(height - margin.top - margin.bottom) / 2})rotate(-90)`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
@@ -93,7 +93,7 @@ function update3(genre) {
 
         // x-label
         x3_publishers
-            .attr("transform", "translate(0, 232)")
+            // .attr("transform", "translate(0, 232)")
             .call(d3.axisBottom(x3))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-30)")
@@ -107,10 +107,11 @@ function update3(genre) {
             .data(data3)
             .enter()
             .append("rect")
-            .attr("x", function (d) { return x3(d.publisher); })
-            .attr("y", function (d) { return y3(d.sales); })
+            .attr("x", function (d) { return x3(d.State_Code); })
+            // return xScale(d.x0+d.x)- (d.x0==0 ? 0 : xScale(d.x0));
+            .attr("y", function (d) { console.log(y3(parseInt(d.Tweets_Cnt))); return y3(parseInt(d.Tweets_Cnt)); })
             .attr("width", x3.bandwidth())
-            .attr("height", function (d) { return 232 - y3(d.sales); })
+            .attr("height", function (d) { return y3(0) - y3(parseInt(d.Tweets_Cnt)); })
             .attr("fill", "#66a0e2");
 
         bar3.exit().remove();
