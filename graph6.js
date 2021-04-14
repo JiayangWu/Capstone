@@ -1,5 +1,5 @@
 
-
+console.log(margin.left);
 var svg6 = d3.select("#graph6")
     .append("svg")
     .attr("width", 1400)
@@ -37,10 +37,10 @@ let tooltip6 = d3.select("body")
 let x6_axis_g = svg6.append("g");
 
 let mouseover6 = function (d) {
-    let color_span = `<span style="color: ${color6(d.State_Code)}; font-size: 18px; font-weight:bold;">`;
+    let color_span = `<span style="color: ${darkenColor(color6(d.State_Code), 1.1)}; font-size: 18px; font-weight:bold;">`;
     let html = `${d.State_Code}<br/>
-            Tweets Count:<br/>
-            ${color_span}${d.Turnout_Rate}</span>`;
+            Turnout Rate:<br/>
+            ${color_span}${d.Turnout_Rate}%</span>`;
     // console.log(color6(d.State_Code));
     // console.log(parseFloat(d.Turnout_Rate));
     // console.log(color6(d.State_Code));
@@ -109,7 +109,7 @@ d3.csv("./data/full_dataset.csv").then(function (data) {
         // return xScale(d.x0+d.x)- (d.x0==0 ? 0 : xScale(d.x0));
         .attr("y", function (d) { return y6(parseFloat(d.Turnout_Rate)); })
         .attr("width", x6.bandwidth())
-        .attr("height", function (d) { console.log(parseFloat(d.Turnout_Rate)); return y6(0) - y6(parseFloat(d.Turnout_Rate)); })
+        .attr("height", function (d) { return y6(0) - y6(parseFloat(d.Turnout_Rate)); })
         .attr("fill", function (d) { return color6(d.State_Code); })
         .on("mouseover", mouseover6)
         .on("mouseout", mouseout6)

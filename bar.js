@@ -47,7 +47,7 @@ let tooltip5 = d3.select("body")
 let x5_axis = svg5.append("g");
 
 let mouseover5 = function (d) {
-    let color_span = `<span style="color: ${color5(d.State_Code)}; font-size: 18px; font-weight:bold;">`;
+    let color_span = `<span style="color: ${darkenColor(color5(d.State_Code), 1.1)}; font-size: 18px; font-weight:bold;">`;
     let html = `${d.State_Code}<br/>
                 Tweets Count:<br/>
                 ${color_span}${d.Tweets_Cnt}</span>`;

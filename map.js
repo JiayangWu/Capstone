@@ -8,7 +8,7 @@ var projection = d3.geoNaturalEarth()
     .scale(width / 1.3 / Math.PI)
     .translate([width / 2, height / 2])
 
-console.log("dsadsadas");
+// console.log("dsadsadas");
 
 var path = d3.geoPath().projection(d3.geoMercator());
 

@@ -1,7 +1,7 @@
 // Add your JavaScript code here
 const MAX_WIDTH = Math.max(1080, window.innerWidth);
 const MAX_HEIGHT = 720;
-const margin = { top: 40, right: 100, bottom: 40, left: 175 };
+const margin = { top: 40, right: 100, bottom: 40, left: 100 };
 
 const width = 540;
 const height = 330;
@@ -11,7 +11,7 @@ let graph_1_width = (MAX_WIDTH / 2) - 10, graph_1_height = 250;
 let graph_2_width = (MAX_WIDTH / 2) - 10, graph_2_height = 275;
 let graph_3_width = MAX_WIDTH / 2, graph_3_height = 575;
 
-console.log("hello");
+// console.log("hello");
 
 // Graph1
 var svg1 = d3.select("#graph1")
@@ -88,7 +88,7 @@ function update(year1, year2) {
     else {
         chart1_title_string = " from " + year1 + " to " + year2;
     }
-    
+
     // TODO: Add chart title
     chart1_title
         .attr("transform", `translate(${(width - margin.left - margin.right) / 2}, ${-10})`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
