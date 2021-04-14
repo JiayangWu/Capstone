@@ -1,0 +1,202 @@
+{
+    "NA": [
+        {
+            "genre": "Sports",
+            "count": "683.3499999999967"
+        },
+        {
+            "genre": "Platform",
+            "count": "447.0499999999991"
+        },
+        {
+            "genre": "Racing",
+            "count": "359.41999999999774"
+        },
+        {
+            "genre": "Role-Playing",
+            "count": "327.279999999999"
+        },
+        {
+            "genre": "Puzzle",
+            "count": "123.78000000000009"
+        },
+        {
+            "genre": "Misc",
+            "count": "410.23999999999904"
+        },
+        {
+            "genre": "Shooter",
+            "count": "582.599999999995"
+        },
+        {
+            "genre": "Simulation",
+            "count": "183.31000000000068"
+        },
+        {
+            "genre": "Action",
+            "count": "877.8299999999916"
+        },
+        {
+            "genre": "Fighting",
+            "count": "223.59000000000017"
+        },
+        {
+            "genre": "Adventure",
+            "count": "105.79999999999998"
+        },
+        {
+            "genre": "Strategy",
+            "count": "68.70000000000019"
+        }
+    ],
+    "EU": [
+        {
+            "genre": "Sports",
+            "count": "376.84999999999457"
+        },
+        {
+            "genre": "Platform",
+            "count": "201.63000000000017"
+        },
+        {
+            "genre": "Racing",
+            "count": "238.39000000000024"
+        },
+        {
+            "genre": "Role-Playing",
+            "count": "188.06000000000031"
+        },
+        {
+            "genre": "Puzzle",
+            "count": "50.77999999999998"
+        },
+        {
+            "genre": "Misc",
+            "count": "215.98000000000036"
+        },
+        {
+            "genre": "Shooter",
+            "count": "313.2699999999967"
+        },
+        {
+            "genre": "Simulation",
+            "count": "113.3800000000002"
+        },
+        {
+            "genre": "Action",
+            "count": "524.9999999999854"
+        },
+        {
+            "genre": "Fighting",
+            "count": "101.32000000000025"
+        },
+        {
+            "genre": "Adventure",
+            "count": "64.13000000000008"
+        },
+        {
+            "genre": "Strategy",
+            "count": "45.34000000000005"
+        }
+    ],
+    "JP": [
+        {
+            "genre": "Sports",
+            "count": "135.3700000000004"
+        },
+        {
+            "genre": "Platform",
+            "count": "130.77000000000012"
+        },
+        {
+            "genre": "Racing",
+            "count": "56.69000000000002"
+        },
+        {
+            "genre": "Role-Playing",
+            "count": "352.3099999999979"
+        },
+        {
+            "genre": "Puzzle",
+            "count": "57.30999999999997"
+        },
+        {
+            "genre": "Misc",
+            "count": "107.75999999999995"
+        },
+        {
+            "genre": "Shooter",
+            "count": "38.28000000000007"
+        },
+        {
+            "genre": "Simulation",
+            "count": "63.70000000000007"
+        },
+        {
+            "genre": "Action",
+            "count": "159.95000000000087"
+        },
+        {
+            "genre": "Fighting",
+            "count": "87.35000000000014"
+        },
+        {
+            "genre": "Adventure",
+            "count": "52.0700000000003"
+        },
+        {
+            "genre": "Strategy",
+            "count": "49.46000000000003"
+        }
+    ],
+    "Other": [
+        {
+            "genre": "Sports",
+            "count": "134.96999999999758"
+        },
+        {
+            "genre": "Platform",
+            "count": "51.589999999999776"
+        },
+        {
+            "genre": "Racing",
+            "count": "77.27000000000116"
+        },
+        {
+            "genre": "Role-Playing",
+            "count": "59.60999999999999"
+        },
+        {
+            "genre": "Puzzle",
+            "count": "12.549999999999935"
+        },
+        {
+            "genre": "Misc",
+            "count": "75.32000000000136"
+        },
+        {
+            "genre": "Shooter",
+            "count": "102.69000000000112"
+        },
+        {
+            "genre": "Simulation",
+            "count": "31.520000000000294"
+        },
+        {
+            "genre": "Action",
+            "count": "187.3799999999972"
+        },
+        {
+            "genre": "Fighting",
+            "count": "36.67999999999998"
+        },
+        {
+            "genre": "Adventure",
+            "count": "16.810000000000024"
+        },
+        {
+            "genre": "Strategy",
+            "count": "11.359999999999932"
+        }
+    ]
+}

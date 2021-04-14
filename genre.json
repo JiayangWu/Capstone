@@ -1,0 +1,266 @@
+{
+    "Sports": [
+        {
+            "publisher": "Electronic Arts",
+            "sales": 479.66999999999973
+        },
+        {
+            "publisher": "Nintendo",
+            "sales": 218.00999999999993
+        },
+        {
+            "publisher": "Konami Digital Entertainment",
+            "sales": 98.94999999999999
+        },
+        {
+            "publisher": "Take-Two Interactive",
+            "sales": 76.76999999999997
+        },
+        {
+            "publisher": "Activision",
+            "sales": 75.90999999999994
+        }
+    ],
+    "Misc": [
+        {
+            "publisher": "Nintendo",
+            "sales": 180.66999999999996
+        },
+        {
+            "publisher": "Ubisoft",
+            "sales": 97.53000000000004
+        },
+        {
+            "publisher": "Sony Computer Entertainment",
+            "sales": 80.80000000000004
+        },
+        {
+            "publisher": "Activision",
+            "sales": 76.54999999999993
+        },
+        {
+            "publisher": "Microsoft Game Studios",
+            "sales": 46.99000000000001
+        }
+    ],
+    "Racing": [
+        {
+            "publisher": "Nintendo",
+            "sales": 151.29999999999995
+        },
+        {
+            "publisher": "Electronic Arts",
+            "sales": 145.77
+        },
+        {
+            "publisher": "Sony Computer Entertainment",
+            "sales": 110.56999999999998
+        },
+        {
+            "publisher": "THQ",
+            "sales": 40.17
+        },
+        {
+            "publisher": "Codemasters",
+            "sales": 34.62000000000002
+        }
+    ],
+    "Strategy": [
+        {
+            "publisher": "Nintendo",
+            "sales": 27.349999999999998
+        },
+        {
+            "publisher": "Activision",
+            "sales": 17.700000000000003
+        },
+        {
+            "publisher": "Electronic Arts",
+            "sales": 14.079999999999998
+        },
+        {
+            "publisher": "Namco Bandai Games",
+            "sales": 11.829999999999998
+        },
+        {
+            "publisher": "Konami Digital Entertainment",
+            "sales": 10.99
+        }
+    ],
+    "Platform": [
+        {
+            "publisher": "Nintendo",
+            "sales": 427.21
+        },
+        {
+            "publisher": "Sony Computer Entertainment",
+            "sales": 104.05999999999997
+        },
+        {
+            "publisher": "Sega",
+            "sales": 60.83999999999999
+        },
+        {
+            "publisher": "THQ",
+            "sales": 41.02000000000002
+        },
+        {
+            "publisher": "Activision",
+            "sales": 33.40000000000001
+        }
+    ],
+    "Action": [
+        {
+            "publisher": "Take-Two Interactive",
+            "sales": 211.07999999999996
+        },
+        {
+            "publisher": "Ubisoft",
+            "sales": 142.94000000000008
+        },
+        {
+            "publisher": "Activision",
+            "sales": 142.32999999999998
+        },
+        {
+            "publisher": "Nintendo",
+            "sales": 128.17999999999995
+        },
+        {
+            "publisher": "Warner Bros. Interactive Entertainment",
+            "sales": 118.23999999999992
+        }
+    ],
+    "Shooter": [
+        {
+            "publisher": "Activision",
+            "sales": 299.8699999999999
+        },
+        {
+            "publisher": "Electronic Arts",
+            "sales": 158.26000000000002
+        },
+        {
+            "publisher": "Microsoft Game Studios",
+            "sales": 95.46
+        },
+        {
+            "publisher": "Nintendo",
+            "sales": 69.72999999999999
+        },
+        {
+            "publisher": "Ubisoft",
+            "sales": 67.64999999999999
+        }
+    ],
+    "RolePlaying": [
+        {
+            "publisher": "Nintendo",
+            "sales": 284.9
+        },
+        {
+            "publisher": "Square Enix",
+            "sales": 97.09000000000006
+        },
+        {
+            "publisher": "Bethesda Softworks",
+            "sales": 54.160000000000004
+        },
+        {
+            "publisher": "Namco Bandai Games",
+            "sales": 53.82000000000001
+        },
+        {
+            "publisher": "SquareSoft",
+            "sales": 52.589999999999996
+        }
+    ],
+    "Puzzle": [
+        {
+            "publisher": "Nintendo",
+            "sales": 124.88000000000002
+        },
+        {
+            "publisher": "Atari",
+            "sales": 21.589999999999996
+        },
+        {
+            "publisher": "THQ",
+            "sales": 9.249999999999998
+        },
+        {
+            "publisher": "Warner Bros. Interactive Entertainment",
+            "sales": 6.6499999999999995
+        },
+        {
+            "publisher": "Hudson Soft",
+            "sales": 6.61
+        }
+    ],
+    "Adventure": [
+        {
+            "publisher": "Nintendo",
+            "sales": 35.709999999999994
+        },
+        {
+            "publisher": "Ubisoft",
+            "sales": 22.19
+        },
+        {
+            "publisher": "THQ",
+            "sales": 19.98
+        },
+        {
+            "publisher": "Disney Interactive Studios",
+            "sales": 17.759999999999998
+        },
+        {
+            "publisher": "Sony Computer Entertainment",
+            "sales": 13.549999999999999
+        }
+    ],
+    "Simulation": [
+        {
+            "publisher": "Electronic Arts",
+            "sales": 89.52999999999999
+        },
+        {
+            "publisher": "Nintendo",
+            "sales": 85.27
+        },
+        {
+            "publisher": "Ubisoft",
+            "sales": 44.66999999999997
+        },
+        {
+            "publisher": "Konami Digital Entertainment",
+            "sales": 32.310000000000024
+        },
+        {
+            "publisher": "505 Games",
+            "sales": 22.24
+        }
+    ],
+    "Fighting": [
+        {
+            "publisher": "THQ",
+            "sales": 72.85999999999999
+        },
+        {
+            "publisher": "Namco Bandai Games",
+            "sales": 61.22
+        },
+        {
+            "publisher": "Nintendo",
+            "sales": 53.35000000000001
+        },
+        {
+            "publisher": "Capcom",
+            "sales": 33.01
+        },
+        {
+            "publisher": "Electronic Arts",
+            "sales": 31.389999999999997
+        }
+    ]
+}
