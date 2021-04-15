@@ -9,11 +9,27 @@ var svg8 = d3.select("#graph8")
 //     .translate([width / 2, height / 2]);
 var path = d3.geoAlbersUsa();
 // console.log("dsadsadas");
-var projection = d3.geoNaturalEarth()
-    .scale(width / 1.3 / Math.PI)
-    .translate([width / 2, height / 2])
+// var projection = d3.geoNaturalEarth()
+//     .scale(width / 1.3 / Math.PI)
+//     .translate([width / 2, height / 2])
 // var path = d3.geoPath().projection(d3.geoMercator());
-console.log("Dasdasdas");
+// console.log("Dasdasdas");
+let tooltip8 = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip3")
+    .style("opacity", 0);
+
+let mouseover8 = function (d) {
+    tooltip8.html(html)
+        .style("left", `${(d3.event.pageX) + 50}px`)
+        .style("top", `${(d3.event.pageY) - 100}px`)
+        .style("box-shadow", `5px 5px 7px ${color6(d.State_Code)}`)
+        .style("background-color", "#ffffff")
+        .transition()
+        .duration(400)
+        .style("opacity", 0.9)
+}
+
 d3.json("us-states.json").then((world) => {
 
     // console.log(topojson.feature(us, us.objects.states).features);
@@ -36,14 +52,11 @@ d3.json("us-states.json").then((world) => {
         .data(map_data)
         .enter().append("path")
         .attr("fill", (d) => {
-            if (d.id == "JPN")
-                return "#a6d854"; // Green for JP
-            else {
-                return "#fc8d62"; // Orange for others
-            }
+            return "#fc8d62"; // Orange for others
         })
+        .on("mouseover", mouseover8)
         .attr("d", d3.geoPath()
-            .projection(projection)
+            .projection(path)
         )
         .style("stroke", "#FFFFFF");
     // .style("stroke", "#FFFFFF");
