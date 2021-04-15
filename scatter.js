@@ -4,15 +4,12 @@ var svg7 = d3.select("#graph7")
     .append("svg")
     .attr("width", 1400)
     .attr("height", 500 * 2)
-    // .attr("left", 500)
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
 var x7 = d3.scaleLinear()
     .range([0, 1100]);
-// .attr("transform", "translate(0,500)")
-// .padding(0.5);
 
 var x7_axis = d3.axisBottom()
     .scale(x7);
@@ -44,7 +41,7 @@ let mouseout7 = function (d) {
         .duration(500)
         .style("opacity", 0);
     svg7.select(`#rect-${d.State_Code}`).attr("fill", function (d) {
-        return color7(d.State_Code);
+        return color7(d[x_variable]);
     });
 };
 
@@ -57,7 +54,7 @@ let regression = d3.regressionLinear();
 function update7(x_variable = this.value) {
     console.log(x_variable);
     let mouseover7 = function (d) {
-        let color_span = `<span style="color: ${darkenColor(color7(d.State_Code), 1.1)}; font-size: 18px; font-weight:bold;">`;
+        let color_span = `<span style="color: ${darkenColor(color7(d[x_variable]), 1.1)}; font-size: 18px; font-weight:bold;">`;
         let html = `${d.State_Code}<br/>
                 Turnout Rate and ` + x_variable + `:<br/>
                 ${color_span}${d.Turnout_Rate}%<br/>
@@ -66,14 +63,14 @@ function update7(x_variable = this.value) {
         tooltip7.html(html)
             .style("left", `${(d3.event.pageX) + 50}px`)
             .style("top", `${(d3.event.pageY) - 100}px`)
-            .style("box-shadow", `5px 5px 7px ${color7(d.State_Code)}`)
+            .style("box-shadow", `5px 5px 7px ${color7(d[x_variable])}`)
             .style("background-color", "#ffffff")
             .transition()
             .duration(400)
             .style("opacity", 0.9)
 
         svg7.select(`#rect-${d.State_Code}`).attr("fill", function (d) {
-            return darkenColor(color7(d.State_Code), 0.8);
+            return darkenColor(color7(d[x_variable]), 0.8);
         });
     }
     console.log(x_variable);
@@ -82,6 +79,7 @@ function update7(x_variable = this.value) {
 
         // console.log(data);
         data = filterData(data, function (a, b) {
+            // sort by x_variable, INC
             return parseInt(b[x_variable]) - parseInt(a[x_variable])
         });
         // console.log(data);
@@ -132,7 +130,7 @@ function update7(x_variable = this.value) {
             .attr("r", 8)
             // .attr("width", x7.bandwidth())
             // .attr("height", function (d) { return y7(0) - y7(parseFloat(d.Turnout_Rate)); })
-            .attr("fill", function (d) { return color7(d.State_Code); })
+            .attr("fill", function (d) { return color7(d[x_variable]); })
 
             .attr("id", function (d) { return `rect-${d.State_Code}` });
         // regression.data(data).x(d => d.Turnout_Rate).y(d => d[x_variable]);
