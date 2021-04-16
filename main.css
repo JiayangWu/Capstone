@@ -2,9 +2,9 @@
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
-html, body, text, button, label, h3, h5 {
+/* html, body, text, button, label, h3, h5 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+} */
 .header > h3, h5 {
     margin: 0;
     padding-top: 20px;
