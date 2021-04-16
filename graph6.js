@@ -10,7 +10,7 @@ var svg6 = d3.select("#graph6")
         "translate(" + margin.left + "," + margin.top + ")");
 
 var x6 = d3.scaleBand()
-    .range([0, 1100])
+    .range([0, 1000])
     // .attr("transform", "translate(0,500)")
     .padding(0.5);
 
@@ -79,17 +79,17 @@ d3.csv("./data/full_dataset.csv").then(function (data) {
     y6_desc.attr("transform", `translate(-60, ${(height - margin.top - margin.bottom) / 2 + 80})rotate(-90)`)       // HINT: Place this at the center left edge of the graph - use translate(x, y) that we discussed earlier
         .style("text-anchor", "middle")
         .style("font-size", 18)
-        .text("Tweets Counts in Each State");
+        .text("Voter Turnout in Each State");
 
     // Add chart title
     title6.attr("transform", `translate(500, -25)`)      // HINT: Place this at the top middle edge of the graph - use translate(x, y) that we discussed earlier
         .style("text-anchor", "middle")
         .style("font-size", 18)
-        .text("Tweets Count VS State Code");
+        .text("Voter Turnout VS State Code");
 
     // Add x-axis description
     x6_desc.style("font-size", 18)
-        .text("State Code").attr("transform", `translate(500, 550)`);
+        .text("State Code").attr("transform", `translate(450, 550)`);
 
     // Create x-axis
     x6_axis_g
