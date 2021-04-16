@@ -8,11 +8,12 @@ var svg5 = d3.select("#graph5")
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
+// .attr("transform", (2, 30));
 let countRef5 = svg5.append("g");
 
 
 var x5 = d3.scaleBand()
-    .range([0, 1100])
+    .range([0, 1000])
     // .attr("transform", "translate(0,500)")
     .padding(0.5);
 
@@ -27,13 +28,6 @@ let y5_labels = svg5.append("g");
 
 var y5 = d3.scaleLinear()
     .range([500, 0])
-
-// svg5.append("text")
-//     .attr("transform", `translate(${(width - margin.left - margin.right) / 2},
-// ${(height - margin.top - margin.bottom) + 60})`)       // HINT: Place this at the bottom middle edge of the graph - use translate(x, y) that we discussed earlier
-//     .style("text-anchor", "middle")
-//     .style("font-size", 18)
-//     .text("Publisher");
 
 let y5_desc = svg5.append("text");
 let title5 = svg5.append("text");
@@ -99,13 +93,15 @@ d3.csv("./data/full_dataset.csv").then(function (data5) {
 
     // Add x-axis description
     x5_desc.style("font-size", 18)
-        .text("State Code").attr("transform", `translate(500, 550)`);
+        .text("State Code").attr("transform", `translate(450, 550)`);
 
     // Create x-axis
     x5_axis
         .call(x_axis)
         .style("text-anchor", "end")
-        .attr("transform", "translate(0,500)");
+        .attr("transform", "translate(0,500)")
+        .selectAll("text")
+        .attr("transform", "translate(6, 0)");
 
 
     y5_labels.call(d3.axisLeft(y5).tickSizeOuter(0))
