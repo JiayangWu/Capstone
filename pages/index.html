@@ -10,6 +10,7 @@
 
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link hred="../main.css" rel="stylesheet">
     <style type="text/css">
         body {
             padding-top: 60px;
@@ -18,22 +19,16 @@
     </style>
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png"> -->
     <!-- <link rel="shortcut icon" href="../assets/ico/favicon.png"> -->
     <link rel="shortcut icon" href="#">
 </head>
 
 <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -46,38 +41,19 @@
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./pages/about.html">About</a></li>
-                        <!-- <li><a href="#contact">Contact</a></li> -->
-                        <!-- <li class="dropdown">
+                        <li><a href="./about.html">About</a></li>
+                        <!-- <li><a href="#contact">Contact</a></li> --> -->
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis <b
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="./pages/single.html">Single linear regression</a></li>
-                                <li><a href="./pages/multi.html">Multiple linear regression</a></li>
-                                <li><a href="./pages/chi2.html">Chi-squared Test</a></li>
-                            </ul>
-                        </li> -->
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><a href="./single.html">Single linear regression</a></li>
+                                <li><a href="./multi.html">Multiple linear regression</a></li>
+                                <li><a href="./chi2.html">Chi-squared Test</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <!-- <form class="navbar-form pull-right">
-                        <input class="span2" type="text" placeholder="Email">
-                        <input class="span2" type="password" placeholder="Password">
-                        <button type="submit" class="btn">Sign in</button>
-                    </form> -->
                 </div>
-                <!--/.nav-collapse -->
             </div>
         </div>
     </div>
@@ -90,31 +66,31 @@
             <p>This is a template for a simple marketing or informational website. It includes a large callout called
                 the hero unit and three supporting pieces of content. Use it as a starting point to create something
                 more unique.</p>
-            <p><a href="./pages/data.html" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+            <p><a href="./about.html" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
         </div>
 
         <!-- Example row of columns -->
         <div class="row">
             <div class="span4">
-                <h2>Heading</h2>
+                <h2>Pearson Correlation</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
                     mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
                     mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn" href="./pages/single.html">View details &raquo;</a></p>
+                <p><a class="btn" href="./single.html">View details &raquo;</a></p>
             </div>
             <div class="span4">
                 <h2>Heading</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
                     mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
                     mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn" href="./pages/multi.html">View details &raquo;</a></p>
+                <p><a class="btn" href="./multi.html">View details &raquo;</a></p>
             </div>
             <div class="span4">
-                <h2>Heading</h2>
+                <h2>Chi^2 Test</h2>
                 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
                     porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
                     ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn" href="./pages/chi2.html">View details &raquo;</a></p>
+                <p><a class="btn" href="./chi2.html">View details &raquo;</a></p>
             </div>
         </div>
 
@@ -126,22 +102,15 @@
 
     </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
 
