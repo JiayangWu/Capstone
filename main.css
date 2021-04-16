@@ -3,7 +3,7 @@
     margin-bottom: 20px;
 }
 html, body, text, button, label, h3, h5 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .header > h3, h5 {
     margin: 0;
@@ -129,7 +129,7 @@ div.tooltip {
 
 .barPlots {
     background-color: #FFFFFF;
-    margin:50px;
+    margin-bottom:50px;
     /* margin-bottom:300px; */
     box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2), 0 6px 18px 0 rgba(0, 0, 0, 0.18);
     border-radius: 20px;

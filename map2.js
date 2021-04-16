@@ -52,22 +52,13 @@ let mouseout8 = function (d) {
     });
 }
 
-d3.json("us-states.json").then((world) => {
+d3.json("../us-states.json").then((us) => {
 
     // console.log(topojson.feature(us, us.objects.states).features);
-    var map_data = topojson.feature(world, world.objects.states).features;
+    var map_data = topojson.feature(us, us.objects.states).features;
 
 
     console.log(map_data);
-    // var map2_data = topojson.feature(us, us.objects.states).features;
-    // console.log(map2_data);
-
-    // svg.append("g")
-    //   .attr("class", "states")
-    // .selectAll("path")
-    // .data(topojson.feature(us, us.objects.states).features)
-    // .enter().append("path")
-    //   .attr("d", path);
 
     svg8.append("g")
         .selectAll("path")

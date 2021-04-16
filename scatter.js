@@ -9,10 +9,10 @@ var svg7 = d3.select("#graph7")
         "translate(" + margin.left + "," + margin.top + ")");
 
 var x7 = d3.scaleLinear()
-    .range([0, 1100]);
+    .range([0, 950]);
 
 var x7_axis = d3.axisBottom()
-    .scale(x7);
+    .scale(x7).tickSizeOuter(0);
 
 // # https://colourco.de
 let color7 = d3.scaleOrdinal()
@@ -35,21 +35,11 @@ let x7_axis_g = svg7.append("g");
 
 
 
-let mouseout7 = function (d) {
-    // Set opacity back to 0 to hide
-    tooltip7.transition()
-        .duration(500)
-        .style("opacity", 0);
-    svg7.select(`#rect-${d.State_Code}`).attr("fill", function (d) {
-        return color7(d[x_variable]);
-    });
-};
-
 function filterData(data, comparator) {
     return data.sort(comparator).slice(2, 49);
 }
 
-let regression = d3.regressionLinear();
+// let regression = d3.regressionLinear();
 
 function update7(x_variable = this.value) {
     console.log(x_variable);
@@ -72,7 +62,17 @@ function update7(x_variable = this.value) {
         svg7.select(`#rect-${d.State_Code}`).attr("fill", function (d) {
             return darkenColor(color7(d[x_variable]), 0.8);
         });
+
     }
+    let mouseout7 = function (d) {
+        // Set opacity back to 0 to hide
+        tooltip7.transition()
+            .duration(500)
+            .style("opacity", 0);
+        svg7.select(`#rect-${d.State_Code}`).attr("fill", function (d) {
+            return color7(d[x_variable]);
+        });
+    };
     console.log(x_variable);
     d3.csv("./data/full_dataset.csv").then(function (data) {
         svg7.selectAll("circle").remove();
@@ -103,14 +103,13 @@ function update7(x_variable = this.value) {
         // Add x-axis description
         x7_desc.style("font-size", 18)
             .text(x_variable)
-            .attr("transform", `translate(500, 550)`);
+            .attr("transform", `translate(450, 550)`);
 
         // Create x-axis
         x7_axis_g
             .call(x7_axis)
             .style("text-anchor", "end")
             .attr("transform", "translate(0,500)");
-
 
         y7_labels.call(d3.axisLeft(y7).tickSizeOuter(0))
             .attr("transform", "translate(0,0)");
@@ -128,12 +127,9 @@ function update7(x_variable = this.value) {
             .attr("cx", function (d) { return x7(parseFloat(d[x_variable])); })
             .attr("cy", function (d) { return y7(parseFloat(d.Turnout_Rate)); })
             .attr("r", 8)
-            // .attr("width", x7.bandwidth())
-            // .attr("height", function (d) { return y7(0) - y7(parseFloat(d.Turnout_Rate)); })
             .attr("fill", function (d) { return color7(d[x_variable]); })
 
             .attr("id", function (d) { return `rect-${d.State_Code}` });
-        // regression.data(data).x(d => d.Turnout_Rate).y(d => d[x_variable]);
 
         bar7.exit().remove();
         y7_desc.exit().remove();
