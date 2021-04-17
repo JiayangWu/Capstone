@@ -9,7 +9,7 @@ var path = d3.geoAlbersUsa();
 
 let tooltip8 = d3.select("body")
     .append("div")
-    .attr("class", "tooltip3")
+    .attr("class", "tooltip9")
     .style("opacity", 0);
 
 
@@ -23,14 +23,14 @@ d3.csv("./data/chi2.csv").then(function (data) {
     });
 
     d3.json("../us-states.json").then((us) => {
-        console.log(state2Winners);
+        // console.log(state2Winners);
         let mouseover8 = function (d) {
             let state_name = d.properties.name;
             let html = `${state_name}`;
             tooltip8.html(html)
                 .style("left", `${(d3.event.pageX) + 50}px`)
                 .style("top", `${(d3.event.pageY) - 100}px`)
-                .style("box-shadow", `5px 5px 7px ${color_map(d, false)}`)
+                .style("box-shadow", `2px 2px 2px #A8ACC7`)
                 .style("background-color", "#ffffff")
                 .transition()
                 .duration(400)
@@ -87,7 +87,7 @@ d3.csv("./data/chi2.csv").then(function (data) {
                     state2Winners[state_name]["Tweets_winner"] == "Biden") {
                     // console.log(state_name, t_bb.url);
                     if (darken) {
-                        t_bb = t_bb.background(darkenColor("#2b4a93", 0.5));
+                        t_bb = t_bb.background(darkenColor("#2b4a93", 0.8));
                     }
                     svg8.call(t_bb);
                     return t_bb.url(); // blue
@@ -95,7 +95,7 @@ d3.csv("./data/chi2.csv").then(function (data) {
                 else if (state2Winners[state_name]["Real_winner"] == "Biden" &&
                     state2Winners[state_name]["Tweets_winner"] == "Trump") {
                     if (darken) {
-                        t_tb.stroke(darkenColor("#2b4a93", 0.5));
+                        t_tb.stroke(darkenColor("#2b4a93", 0.8));
                     }
                     svg8.call(t_tb);
                     return t_tb.url();
@@ -103,14 +103,14 @@ d3.csv("./data/chi2.csv").then(function (data) {
                 else if (state2Winners[state_name]["Real_winner"] == "Trump" &&
                     state2Winners[state_name]["Tweets_winner"] == "Biden") {
                     if (darken) {
-                        t_bt = t_bt.background(darkenColor("#C13739", 0.5));
+                        t_bt = t_bt.background(darkenColor("#C13739", 0.8));
                     }
                     svg8.call(t_bt);
                     return t_bt.url();
                 }
                 else {
                     if (darken) {
-                        t_tt = t_tt.stroke(darkenColor("#C13739", 0.5));
+                        t_tt = t_tt.stroke(darkenColor("#C13739", 0.8));
                     }
                     svg8.call(t_tt);
                     return t_tt.url(); // red
