@@ -30,15 +30,15 @@ d3.csv("./data/chi2.csv").then(function (data) {
             tooltip8.html(html)
                 .style("left", `${(d3.event.pageX) + 50}px`)
                 .style("top", `${(d3.event.pageY) - 100}px`)
-                .style("box-shadow", `5px 5px 7px ${color_map(d)}`)
+                .style("box-shadow", `5px 5px 7px ${color_map(d, false)}`)
                 .style("background-color", "#ffffff")
                 .transition()
                 .duration(400)
                 .style("opacity", 0.9)
 
-            // svg8.select(`#rect-${d.id}`).attr("fill", function (d) {
-            //     return darkenColor(color_map(d), 0.5);
-            // });
+            svg8.select(`#rect-${d.id}`).attr("fill", function (d) {
+                return color_map(d, true);
+            });
         }
 
         let mouseout8 = function (d) {
@@ -46,82 +46,84 @@ d3.csv("./data/chi2.csv").then(function (data) {
                 .duration(500)
                 .style("opacity", 0);
             svg8.select(`#rect-${d.id}`).attr("fill", function (d) {
-                return color_map(d);
+                return color_map(d, false);
             });
         }
 
-        let color_map = function (d) {
+        let color_map = function (d, darken) {
+            // Tweets: Biden, election: Biden
+            var t_bb = textures.circles()
+                .heavier()
+                .fill("white")
+                .background("#2b4a93");
 
-            var t_bb = textures.lines() // Tweets: Biden, election: Biden
+            // Tweets: Trump, election: Biden
+            var t_tb = textures.lines()
                 .orientation("diagonal")
                 .size(40)
                 .strokeWidth(26)
                 .stroke("#2b4a93")
-                .background("white");
-
-            // Tweets: Trump, election: Biden
-            var t_tb = textures.circles()
-                .heavier()
-                // .stroke("#FFFFFF")
-                // .fill("#FFFFFF")
-                .background("#2b4a93");
+                .background("#FFFFFF");
 
             // Tweets: Biden, election: Trump
-            var t_bt = textures.lines()
+            var t_bt = textures.circles()
+                .heavier()
+                .fill("white")
+                .background("#C13739");
+
+            // Tweets: Trump, election: Trump
+            var t_tt = textures.lines()
                 .orientation("diagonal")
                 .size(40)
                 .strokeWidth(26)
                 .stroke("#C13739")
-                .background("white");
+                .background("#FFFFFF");
 
-            // Tweets: Trump, election: Trump
-            var t_tt = textures.circles()
-                .heavier()
-                .background("#C13739");
-
-            svg8.call(t_bb);
-            svg8.call(t_tb);
-            svg8.call(t_tt);
-            svg8.call(t_bt);
-            if (d.id < "60") {
+            // console.log(darken); 
+            if (d.id < "60") { // only deal with 50 states + dc
                 let state_name = d.properties.name;
                 // console.log(state_name, state2Winners[state_name]["Real_winner"], state2Winners[state_name]["Tweets_Winner"]);
                 if (state2Winners[state_name]["Real_winner"] == "Biden" &&
                     state2Winners[state_name]["Tweets_winner"] == "Biden") {
                     // console.log(state_name, t_bb.url);
+                    if (darken) {
+                        t_bb = t_bb.background(darkenColor("#2b4a93", 0.5));
+                    }
+                    svg8.call(t_bb);
                     return t_bb.url(); // blue
                 }
                 else if (state2Winners[state_name]["Real_winner"] == "Biden" &&
                     state2Winners[state_name]["Tweets_winner"] == "Trump") {
+                    if (darken) {
+                        t_tb.stroke(darkenColor("#2b4a93", 0.5));
+                    }
+                    svg8.call(t_tb);
                     return t_tb.url();
                 }
                 else if (state2Winners[state_name]["Real_winner"] == "Trump" &&
                     state2Winners[state_name]["Tweets_winner"] == "Biden") {
+                    if (darken) {
+                        t_bt = t_bt.background(darkenColor("#C13739", 0.5));
+                    }
+                    svg8.call(t_bt);
                     return t_bt.url();
                 }
                 else {
+                    if (darken) {
+                        t_tt = t_tt.stroke(darkenColor("#C13739", 0.5));
+                    }
+                    svg8.call(t_tt);
                     return t_tt.url(); // red
                 }
             }
 
         }
-        // console.log(topojson.feature(us, us.objects.states).features);
-
-
-
-
-
-
         var map_data = topojson.feature(us, us.objects.states).features;
-
-
-
-
         svg8.append("g")
             .selectAll("path")
             .data(map_data)
             .enter().append("path")
-            .attr("fill", color_map)
+            .attr("fill", function (d) { return color_map(d, false); })
             .on("mouseover", mouseover8)
             .on("mouseout", mouseout8)
             .attr("d", d3.geoPath()
@@ -131,30 +133,71 @@ d3.csv("./data/chi2.csv").then(function (data) {
             .style("stroke", "#FFFFFF")
             .attr("transform", "translate(100, 20)");
 
-        svg8.append("circle")
-            .attr("cx", 360)
-            .attr("cy", 548)
-            .attr("r", 6)
+        svg8.append("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("transform", "translate(260, 542)")
             .style("fill", "#2b4a93")
 
         svg8
-            .append("circle")
-            .attr("cx", 360)
-            .attr("cy", 578)
-            .attr("r", 6)
+            .append("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("transform", "translate(260, 572)")
             .style("fill", "#C13739")
 
         svg8.append("text")
-            .attr("x", 390)
+            .attr("x", 290)
             .attr("y", 550)
             .text("States where Biden is the election winner")
             .style("font-size", "15px")
             .attr("alignment-baseline", "middle")
 
         svg8.append("text")
-            .attr("x", 390)
+            .attr("x", 290)
             .attr("y", 580)
             .text("States where Trump is the election winner")
+            .style("font-size", "15px")
+            .attr("alignment-baseline", "middle")
+
+        // pattern legend below
+        var t_tweet_trump =
+            textures.lines()
+                .orientation("diagonal")
+                .size(40)
+                .strokeWidth(26)
+                .stroke("#000000")
+                .background("#FFFFFF");
+
+        var t_tweet_biden = textures.circles()
+            .heavier()
+            .fill("white")
+            .background("#000000");
+
+        svg8.call(t_tweet_trump);
+        svg8.call(t_tweet_biden);
+
+        svg8.append("rect").attr("width", 15)
+            .attr("height", 15)
+            .attr("transform", "translate(600, 572)")
+            .style("fill", t_tweet_trump.url());
+
+        svg8.append("rect").attr("width", 15)
+            .attr("height", 15)
+            .attr("transform", "translate(600, 542)")
+            .style("fill", t_tweet_biden.url());
+
+        svg8.append("text")
+            .attr("x", 630)
+            .attr("y", 550)
+            .text("States where Biden is the Tweets winner")
+            .style("font-size", "15px")
+            .attr("alignment-baseline", "middle")
+
+        svg8.append("text")
+            .attr("x", 630)
+            .attr("y", 580)
+            .text("States where Trump is the Tweets winner")
             .style("font-size", "15px")
             .attr("alignment-baseline", "middle")
     });
