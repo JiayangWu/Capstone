@@ -1,0 +1,52 @@
+State_Code,Tweets_Cnt,Tweets_Cnt_Trump,Tweets_Cnt_Biden,Tweets_Winner,Election_Winner,State_Name
+AK,740,311,429,Biden,Trump,Alaska
+AL,1738,860,878,Biden,Trump,Alabama
+AR,1205,687,518,Trump,Trump,Arkansas
+AZ,6250,2922,3328,Biden,Biden,Arizona
+CA,56972,31156,25816,Trump,Biden,California
+CO,6305,3618,2687,Trump,Biden,Colorado
+CT,3819,2207,1612,Trump,Biden,Connecticut
+DC,16739,9684,7055,Trump,Biden,District of Columbia
+DE,590,252,338,Biden,Biden,Delaware
+FL,29929,16625,13304,Trump,Trump,Florida
+GA,6201,2945,3256,Biden,Biden,Georgia
+HI,1341,706,635,Trump,Biden,Hawaii
+IA,1452,880,572,Trump,Trump,Iowa
+ID,1012,608,404,Trump,Trump,Idaho
+IL,12277,6777,5500,Trump,Biden,Illinois
+IN,3108,1556,1552,Trump,Trump,Indiana
+KS,1788,900,888,Trump,Trump,Kansas
+KY,2680,1484,1196,Trump,Trump,Kentucky
+LA,3998,2162,1836,Trump,Trump,Louisiana
+MA,8757,4865,3892,Trump,Biden,Massachusetts
+MD,7207,3925,3282,Trump,Biden,Maryland
+ME,715,398,317,Trump,Biden,Maine
+MI,6145,3065,3080,Biden,Biden,Michigan
+MN,3443,1821,1622,Trump,Biden,Minnesota
+MO,4317,2440,1877,Trump,Trump,Missouri
+MS,507,241,266,Biden,Trump,Mississippi
+MT,499,188,311,Biden,Trump,Montana
+NC,6469,3415,3054,Trump,Trump,North Carolina
+ND,772,483,289,Trump,Trump,North Dakota
+NE,768,394,374,Trump,Trump,Nebraska
+NH,3889,2295,1594,Trump,Biden,New Hampshire
+NJ,9006,5045,3961,Trump,Biden,New Jersey
+NM,948,502,446,Trump,Biden,New Mexico
+NV,4621,2388,2233,Trump,Biden,Nevada
+NY,43886,22881,21005,Trump,Biden,New York
+OH,8284,3871,4413,Biden,Trump,Ohio
+OK,1653,847,806,Trump,Trump,Oklahoma
+OR,5532,3197,2335,Trump,Biden,Oregon
+PA,12415,7012,5403,Trump,Biden,Pennsylvania
+RI,590,312,278,Trump,Biden,Rhode Island
+SC,2325,1117,1208,Biden,Trump,South Carolina
+SD,2586,1223,1363,Biden,Trump,South Dakota
+TN,7783,3909,3874,Trump,Trump,Tennessee
+TX,30682,16491,14191,Trump,Trump,Texas
+UT,2403,1309,1094,Trump,Trump,Utah
+VA,4715,2489,2226,Trump,Biden,Virginia
+VT,1145,911,234,Trump,Biden,Vermont
+WA,5457,3152,2305,Trump,Biden,Washington
+WI,3137,1480,1657,Biden,Biden,Wisconsin
+WV,667,300,367,Biden,Trump,West Virginia
+WY,507,269,238,Trump,Trump,Wyoming
