@@ -136,7 +136,7 @@ div.tooltip {
     height:660px;
 }
 
-div.tooltip3, div.tooltip7 {	
+div.tooltip3, div.tooltip7, div.tooltip9 {	
     text-align: center;	
         font: 13px;		
     background: rgb(168, 203, 247);	
@@ -151,4 +151,8 @@ div.tooltip3, div.tooltip7 {
 
 div.tooltip7 {
     height:120px;
+}
+
+div.tooltip9 {
+    height:23px;
 }
