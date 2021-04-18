@@ -322,3 +322,14 @@ div.tooltip9 {
     padding-bottom:20px;
     font-family: Helvetica;
 }
+
+.table {
+    border:1px solid black;
+}
+
+td, th {
+    border:1px solid black;
+    text-align: center;
+    vertical-align: center;
+    padding:10px;
+}
