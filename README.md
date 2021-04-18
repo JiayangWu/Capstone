@@ -1,7 +1,7 @@
 # Code README
-### Design Decisions ###
 Our web application can be accessed by [this link](https://capstoneee.herokuapp.com/index.html).
 
+### Design Decisions ###
 We built the website by [D3.JS](https://d3js.or), [Bootstrap](https://getbootstrap.com), [TopoJson](https://github.com/topojson/topojson) and [Textures.JS](https://riccardoscalco.it/textures/). 
 
 Then we deployed our code on [Heroku](http://heroku.com). 
