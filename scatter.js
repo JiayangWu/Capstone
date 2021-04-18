@@ -1,5 +1,3 @@
-
-console.log(margin.left);
 var svg7 = d3.select("#graph7")
     .append("svg")
     .attr("width", 1400)
@@ -14,7 +12,7 @@ var x7 = d3.scaleLinear()
 var x7_axis = d3.axisBottom()
     .scale(x7).tickSizeOuter(0);
 
-// # https://colourco.de
+// # color can be genrated from https://colourco.de
 let color7 = d3.scaleOrdinal()
     .range(d3.quantize(d3.interpolateHcl("#ded79b", "#9AA6DD"), 51));
 
@@ -33,16 +31,12 @@ let tooltip7 = d3.select("body")
 
 let x7_axis_g = svg7.append("g");
 
-
-
 function filterData(data, comparator) {
+    // keep only data in 5% - 95% range to remove outliers
     return data.sort(comparator).slice(2, 49);
 }
 
-// let regression = d3.regressionLinear();
-
 function update7(x_variable = this.value) {
-    console.log(x_variable);
     let mouseover7 = function (d) {
         let color_span = `<span style="color: ${darkenColor(color7(d[x_variable]), 1.1)}; font-size: 18px; font-weight:bold;">`;
         let html = `${d.State_Code}<br/>
@@ -73,18 +67,15 @@ function update7(x_variable = this.value) {
             return color7(d[x_variable]);
         });
     };
-    console.log(x_variable);
+
     d3.csv("./data/full_dataset.csv").then(function (data) {
         svg7.selectAll("circle").remove();
 
-        // console.log(data);
         data = filterData(data, function (a, b) {
             // sort by x_variable, INC
             return parseInt(b[x_variable]) - parseInt(a[x_variable])
         });
-        // console.log(data);
 
-        // x7.domain(data.map(function (d) { return d.State_Code }));
         x7.domain([0, d3.max(data, function (d) { return parseFloat(d[x_variable]) })]);
         y7.domain([50, d3.max(data, function (d) { return parseFloat(d.Turnout_Rate) })]);
 
@@ -136,7 +127,6 @@ function update7(x_variable = this.value) {
         title7.exit().remove();
         x7_axis_g.exit().remove();
     });
-
 }
 
 let x_variable = "Likes";

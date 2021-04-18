@@ -95,7 +95,9 @@ d3.csv("./data/full_dataset.csv").then(function (data) {
     x6_axis_g
         .call(x6_axis)
         .style("text-anchor", "end")
-        .attr("transform", "translate(0,500)");
+        .attr("transform", "translate(0,500)")
+        .selectAll("text")
+        .attr("transform", "translate(6, 0)");
 
 
     y6_labels.call(d3.axisLeft(y6).tickSizeOuter(0))

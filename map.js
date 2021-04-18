@@ -12,18 +12,13 @@ let tooltip8 = d3.select("body")
     .attr("class", "tooltip9")
     .style("opacity", 0);
 
-
-
 d3.csv("./data/chi2.csv").then(function (data) {
-
     var state2Winners = {};
     data.forEach(element => {
-        // console.log({"Tweets_winner": element.Tweets_Winner, "Real_winner": element.Election_Winner });
         state2Winners[element.State_Name] = { "Tweets_winner": element.Tweets_Winner, "Real_winner": element.Election_Winner };
     });
 
     d3.json("../us-states.json").then((us) => {
-        // console.log(state2Winners);
         let mouseover8 = function (d) {
             let state_name = d.properties.name;
             let html = `${state_name}`;
@@ -79,13 +74,11 @@ d3.csv("./data/chi2.csv").then(function (data) {
                 .stroke("#C13739")
                 .background("#FFFFFF");
 
-            // console.log(darken); 
             if (d.id < "60") { // only deal with 50 states + dc
                 let state_name = d.properties.name;
-                // console.log(state_name, state2Winners[state_name]["Real_winner"], state2Winners[state_name]["Tweets_Winner"]);
                 if (state2Winners[state_name]["Real_winner"] == "Biden" &&
                     state2Winners[state_name]["Tweets_winner"] == "Biden") {
-                    // console.log(state_name, t_bb.url);
+
                     if (darken) {
                         t_bb = t_bb.background(darkenColor("#2b4a93", 0.8));
                     }
@@ -113,7 +106,7 @@ d3.csv("./data/chi2.csv").then(function (data) {
                         t_tt = t_tt.stroke(darkenColor("#C13739", 0.8));
                     }
                     svg8.call(t_tt);
-                    return t_tt.url(); // red
+                    return t_tt.url();
                 }
             }
 
@@ -133,14 +126,14 @@ d3.csv("./data/chi2.csv").then(function (data) {
             .style("stroke", "#FFFFFF")
             .attr("transform", "translate(100, 20)");
 
+        // color legends below
         svg8.append("rect")
             .attr("width", 15)
             .attr("height", 15)
             .attr("transform", "translate(260, 542)")
             .style("fill", "#2b4a93")
 
-        svg8
-            .append("rect")
+        svg8.append("rect")
             .attr("width", 15)
             .attr("height", 15)
             .attr("transform", "translate(260, 572)")
