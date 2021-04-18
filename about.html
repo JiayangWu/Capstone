@@ -63,10 +63,50 @@
 
     <div class="container">
         <p>this is the about page</p>
+        <div class = row>
+            <h3>Introduction</h3>
+            <p class="text">
+                Participation in the presidential election has a fundamental impact on American society. 
+Twitter, as one of the largest social network platforms, has been claimed to play a vital role in presidential elections.
+ Therefore, our project aims to investigate the relationship between voter participation and Twitter engagement in 2020 election.
+
+            </p>
+        </div>
+        <div class = row>
+            <h3>Hypothesis</h3>
+            <p class="text">
+                Our general hypothesis is that the 2020 presidential election participation is associated with Twitter engagement.</br></br>
+        Claim (1): Greater Twitter engagement leads to higher state-wise voter turnout.</br>
+Claim (2): The state-wise winner of the presidential election is related to the candidate who appeared the majority of times in the state-wise Tweets.
+
+            </p>
+        </div>
+        <div class = row>
+            <h3>Data Collection</h3>
+            <p class="text">
+                The data of our project comes from two sources:</br></br>
+                (1) We collected the Tweets that mentioned either Donald Trump or Joe Biden in the month of 2020’s presidential 
+                election through the Kaggle database. This includes user location, id, number of likes, retweets, and user’s followers,
+                 etc. We have filtered the data to include only users from the United States to associate with our second database.</br>
+                (2) We collected state-wise turnout rates for 2020’s presidential election from the Washington Post.
+                 It shows the portion of eligible voters who actually participate in the election.
+
+            </p>
+        </div>
+        <div  class = row>
+            <h3>Raw Data Distribution Visualization</h3>
+        </div>
+        
+        
         <div class="col-lg-12">
+            <h4>1. Count of Tweet for Each State per 10,000 Population </h4>
+            <p>(* Calculated by (count of tweet per state divided by total state population) * 10,000)</p>
             <div class="barPlots">
                 <div id="graph5"></div>
             </div>
+            
+            <h4>2. Voting Turnout Rate for Each State </h4>
+            <p>(* Turnout rate calculated by count of voter who participated divided by total eligible voter count)</p>
             <div class="barPlots">
                 <div id="graph6"></div>
             </div>
