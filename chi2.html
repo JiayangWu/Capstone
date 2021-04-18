@@ -2,129 +2,119 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8">
-   <title>Bootstrap, from Twitter</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="">
-   <meta name="author" content="">
+    <meta charset="utf-8">
+    <title>Does Twitter Political Engagement Imply Real-world Election Participation? </title>
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../main.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://unpkg.com/textures@1.2.0/dist/textures.js"></script>
 
-   <!-- Le styles -->
-   <link href="../assets/css/bootstrap.css" rel="stylesheet">
-   <link href="../main.css" rel="stylesheet">
-   <script src="https://unpkg.com/textures@1.2.0/dist/textures.js"></script>
-   <!-- <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <pattern id="circles-1" patternUnits="userSpaceOnUse" width="10" height="10"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSJ3aGl0ZSIgLz4KICA8Y2lyY2xlIGN4PSIxIiBjeT0iMSIgcj0iMSIgZmlsbD0iYmxhY2siLz4KPC9zdmc+" x="0" y="0" width="10" height="10"> </image> </pattern> </defs> </svg> -->
-   <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-   <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
-   <script src="https://d3js.org/topojson.v2.min.js"></script>
-   <!-- Fav and touch icons -->
-   <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-   <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png"> -->
-   <!-- <link rel="shortcut icon" href="../assets/ico/favicon.png"> -->
-   <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="./icon.png">
 </head>
 
 <body>
-   <div class="navbar navbar-inverse navbar-fixed-top">
-       <div class="navbar-inner">
-           <div class="container">
-               <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-               </button>
-               <img class="brand" src="./TT.png" alt="some_text" width=25px>
-               <div class="nav-collapse collapse">
-                   <ul class="nav">
-                       <li><a href="./index.html">Home</a></li>
-                       <li><a href="./about.html">About</a></li>
-                       <!-- <li><a href="#contact">Contact</a></li> --> -->
-                       <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis <b
-                                   class="caret"></b></a>
-                           <ul class="dropdown-menu">
-                               <li><a href="./single.html">Single linear regression</a></li>
-                               <li><a href="./multi.html">Multiple linear regression</a></li>
-                               <li><a href="./chi2.html">Chi-squared Test</a></li>
-                           </ul>
-                       </li>
-                   </ul>
-               </div>
-           </div>
-       </div>
-   </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="brand" src="./icon.png" alt="some_text" width=25px>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <!-- <li><a href="#contact">Contact</a></li> --> -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./single.html">Single linear regression</a></li>
+                                <li><a href="./multi.html">Multiple linear regression</a></li>
+                                <li><a href="./chi2.html">Chi-squared Test</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-   <div class="container">
-       <h2>Chi-Squared Test</h2>
-       <p>
-           <b>Our Claim</b>: The state-wise winner of the presidential election is related to the candidate who appeared the majority of times in the state-wise Tweets.
-       </p>
-       <p>We used the Chi-Squared Test to validate Claim. Twitter winner is defined as the candidate whose number of mentions in hashtags outnumbers other candidates state-wise. The following table displays the number of states that falls into each category (winner of real-world v.s.Twitter).
-       </p>
-      
-       <table style="border-style: solid solid solid solid;">
-           <tr style="border-style: solid solid solid solid;">
-               <td style="border-style: solid solid solid solid;"></th>
-               <td style="border-style: solid solid solid solid;">Trump
-               (Twitter winner)
-               </td>
-               <td style="border-style: solid solid solid solid;">Biden
-               (Twitter winner)
-               </td>
-              
-           </tr>
-           <tr style="border-style: solid solid solid solid;">
-               <td style="border-style: solid solid solid solid;">Trump (Real)
-               </td>
-               <td style="border-style: solid solid solid solid;text-align:center;">17</td>
-               <td style="border-style: solid solid solid solid;text-align:center;">8</td>
-           </tr>
-           <tr style="border-style: solid solid solid solid;">
-               <td style="border-style: solid solid solid solid;">Biden (Real)</td>
-               <td style="border-style: solid solid solid solid;text-align:center;">21</td>
-               <td style="border-style: solid solid solid solid;text-align:center;">5</td>
-           </tr>
-       </table>
-      
-       <h4>Chi-Squared Test results:</h4>
-       <p>Chi-Squared = 1.09417, df = 1, p-value = 0.295548</p>
+    <div class="container">
+        <h2>Chi-Squared Test</h2>
+        <p>
+            <b>Our Claim</b>: The state-wise winner of the presidential election is related to the candidate who
+            appeared the majority of times in the state-wise Tweets.
+        </p>
+        <p>We used the Chi-Squared Test to validate Claim. Twitter winner is defined as the candidate whose number of
+            mentions in hashtags outnumbers other candidates state-wise. The following table displays the number of
+            states that falls into each category (winner of real-world v.s.Twitter).
+        </p>
 
-       <h4>Conclusion</h4>
-       <p>
-           We do not have enough evidence to say that there is an association between the Tweet winner and the real-world winner.
-       </p>
-       <div class="col-lg-12">
-           <div class="barPlots">
-               <div id="graph8"></div>
-           </div>
-       </div>
-       <hr>
+        <table style="border-style: solid solid solid solid;">
+            <tr style="border-style: solid solid solid solid;">
+                <td style="border-style: solid solid solid solid;">
+                    </th>
+                <td style="border-style: solid solid solid solid;">Trump
+                    (Twitter winner)
+                </td>
+                <td style="border-style: solid solid solid solid;">Biden
+                    (Twitter winner)
+                </td>
 
-       <footer>
-           <p>&copy; @The-real-data-scientists </p>
-       </footer>
+            </tr>
+            <tr style="border-style: solid solid solid solid;">
+                <td style="border-style: solid solid solid solid;">Trump (Real)
+                </td>
+                <td style="border-style: solid solid solid solid;text-align:center;">17</td>
+                <td style="border-style: solid solid solid solid;text-align:center;">8</td>
+            </tr>
+            <tr style="border-style: solid solid solid solid;">
+                <td style="border-style: solid solid solid solid;">Biden (Real)</td>
+                <td style="border-style: solid solid solid solid;text-align:center;">21</td>
+                <td style="border-style: solid solid solid solid;text-align:center;">5</td>
+            </tr>
+        </table>
 
-   </div>
+        <h4>Chi-Squared Test results:</h4>
+        <p>Chi-Squared = 1.09417, df = 1, p-value = 0.295548</p>
 
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-       crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-       crossorigin="anonymous"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-       crossorigin="anonymous"></script>
-   <script type="text/javascript" src="./main.js"></script>
-   <!-- <script type="text/javascript" src="pie.js"></script> -->
-   <!-- <script type="text/javascript" src="../bar.js"></script> -->
-   <!-- <script type="text/javascript" src="map.js"></script> -->
-   <script type="text/javascript" src="./map2.js"></script>
-   <script type="text/javascript" src="./graph6.js"></script>
-   <!-- <script type="text/javascript" src="../scatter.js"></script> -->
+        <h4>Conclusion</h4>
+        <p>
+            We do not have enough evidence to say that there is an association between the Tweet winner and the
+            real-world winner.
+        </p>
+        <div class="col-lg-12">
+            <div class="barPlots">
+                <div id="graph8"></div>
+            </div>
+        </div>
+        <hr>
+
+        <footer>
+            <p>&copy; @The-real-data-scientists </p>
+        </footer>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./map2.js"></script>
+    <script type="text/javascript" src="./graph6.js"></script>
+
 
 </body>
 
 </html>
-
