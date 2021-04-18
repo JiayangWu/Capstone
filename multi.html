@@ -61,7 +61,43 @@
     </div>
 
     <div class="container">
-        <p>this is the multi page</p>
+        <div class="text" id="multiText">
+            We ran a multiple regression to find the relationship between state-wise voting rate 
+            and the four metrics defined before that indicates engagement levels. 
+            Results can be found in this table. We can see that none of the p-values are less than .05, 
+            which shows that even when we expand our input to multiple variables using all four measurements, 
+            there is no evidence showing that state-wise voting rate can be explained by Twitter 
+            user engagement on political matters. 
+        </div>
+        <div class="table" id="multiTable">
+            <table style="width:80%">
+                <tr>
+                    <th></th>
+                    <th>Pearson Correlation</th> 
+                    <th>P-value</th>
+                </tr>
+                <tr>
+                    <td>Likes</td>
+                    <td>-0.17</td>
+                    <td>0.25</td>
+                </tr>
+                <tr>
+                    <td>Retweets</td>
+                    <td>-0.03</td>
+                    <td>0.81</td>
+                </tr>
+                <tr>
+                    <td>Participation rate</td>
+                    <td>0.22</td>
+                    <td>0.13</td>
+                </tr>
+                <tr>
+                    <td>Followers</td>
+                    <td>-0.11</td>
+                    <td>0.46</td>
+                  </tr>
+              </table>
+        </div>
         <!-- <div class="col-lg-12">
             <div class="barPlots">
                 <div id="graph8"></div>
