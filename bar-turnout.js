@@ -1,17 +1,13 @@
-
-console.log(margin.left);
 var svg6 = d3.select("#graph6")
     .append("svg")
     .attr("width", 1400)
     .attr("height", 500 * 2)
-    // .attr("left", 500)
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
 var x6 = d3.scaleBand()
     .range([0, 1000])
-    // .attr("transform", "translate(0,500)")
     .padding(0.5);
 
 var x6_axis = d3.axisBottom()
@@ -41,10 +37,7 @@ let mouseover6 = function (d) {
     let html = `${d.State_Code}<br/>
             Turnout Rate:<br/>
             ${color_span}${d.Turnout_Rate}%</span>`;
-    // console.log(color6(d.State_Code));
-    // console.log(parseFloat(d.Turnout_Rate));
-    // console.log(color6(d.State_Code));
-    // Show the tooltip and set the position relative to the event X and Y location
+
     tooltip6.html(html)
         .style("left", `${(d3.event.pageX) + 50}px`)
         .style("top", `${(d3.event.pageY) - 100}px`)
@@ -116,9 +109,6 @@ d3.csv("./data/full_dataset.csv").then(function (data) {
         .on("mouseover", mouseover6)
         .on("mouseout", mouseout6)
         .attr("id", function (d) { return `rect-${d.State_Code}` });
-
-
-    // svg6.append("g").call(x6_axis).attr("transform", "translate(0,500");
 
     bar6.exit().remove();
     y6_desc.exit().remove();
